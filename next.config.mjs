@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/asl-website',
   images: { unoptimized: true },
   async redirects() {
     return [
