@@ -68,7 +68,7 @@ function PublicationSection({
           groups.map(([year, group]) => (
             <div key={year} className="mt-8 first:mt-0">
               <h3 className="text-lg font-semibold tracking-tight text-gray-950">{year}</h3>
-              <ol className="mt-4 list-decimal space-y-4 pl-5 text-sm/7 text-gray-700">
+              <ol className="mt-4 list-decimal space-y-4 pl-5 text-base/7 text-gray-700">
                 {group.map((item) => (
                   <li key={`${item.key}-${title}`}>
                     {renderCitation(item)}
