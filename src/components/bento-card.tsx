@@ -40,7 +40,7 @@ export function BentoCard({
           <div className="absolute inset-0 bg-linear-to-b from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" />
         )}
         {fade.includes('bottom') && (
-          <div className="absolute inset-0 bg-linear-to-t from-white to-50% group-data-dark:from-gray-800 group-data-dark:from-[-25%]" />
+          <div className="absolute inset-0 bg-linear-to-t from-white/70 to-15% group-data-dark:from-gray-800 group-data-dark:from-[-25%] group-data-dark:to-50%" />
         )}
       </div>
       <div className="relative p-10">

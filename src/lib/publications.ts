@@ -518,6 +518,18 @@ function toKeywords(rawKeywords: string): string[] {
     .filter(Boolean)
 }
 
+function normalizePublicationUrl(rawUrl: string, doi: string): string {
+  const candidate = rawUrl.trim()
+  if (candidate) {
+    if (candidate.startsWith('//')) {
+      return `https:${candidate}`
+    }
+    return candidate
+  }
+
+  return doi ? `https://doi.org/${doi}` : ''
+}
+
 function quoteTitle(title: string): string {
   if (!title) {
     return ''
@@ -646,7 +658,7 @@ function toPublication(entry: BibEntry): Publication {
   const year = Number.parseInt(entry.fields.year ?? '', 10)
   const doi = cleanValue(entry.fields.doi ?? '')
   const rawUrl = cleanValue(entry.fields.url ?? '')
-  const url = rawUrl || (doi ? `https://doi.org/${doi}` : '')
+  const url = normalizePublicationUrl(rawUrl, doi)
   const note = cleanValue(entry.fields.note ?? '')
   const status = inferStatus(note, keywords)
   const abstract = cleanValue(entry.fields.abstract ?? '')

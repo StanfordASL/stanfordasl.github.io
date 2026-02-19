@@ -28,7 +28,7 @@ function Header() {
           alt="Stanford Robotics Lab"
           src="/visual-highlights/2.jpg"
           className="w-full object-cover"
-          style={{ maxHeight: '400px' }}
+          style={{ maxHeight: '400px', objectPosition: 'center 40%' }}
         />
       </div>
     </Container>
@@ -172,11 +172,11 @@ export default function Research() {
         <ThrustSection
           id="control"
           eyebrow="Thrust 5"
-          title="Learning &amp; Optimization-based Control"
+          title="Optimal &amp; Learning-based Control"
           description="We integrate optimization-based methods with AI-driven policies to achieve high-performance control at the physical edge. Our work pushes autonomous systems to operate at the limits of what is dynamically feasible."
           graphic={
             <BentoCard
-              eyebrow="Learning &amp; Optimization-based Control"
+              eyebrow="Optimal &amp; Learning-based Control"
               title="Operate at the limits"
               description=""
               graphic={

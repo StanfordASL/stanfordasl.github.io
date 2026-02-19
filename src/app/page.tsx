@@ -5,7 +5,6 @@ import { ImageCarousel } from '@/components/image-carousel'
 import { Link } from '@/components/link'
 import { LogoCloud } from '@/components/logo-cloud'
 import { DataFlywheel } from '@/components/data-flywheel'
-import { GradientBackground } from '@/components/gradient'
 import { Navbar } from '@/components/navbar'
 import { Heading } from '@/components/text'
 import type { Metadata } from 'next'
@@ -37,7 +36,6 @@ function getVisualHighlights() {
 function Hero() {
   return (
     <div className="relative flex min-h-dvh flex-col">
-      <GradientBackground />
       <Container className="relative">
         <Navbar />
       </Container>
@@ -146,7 +144,6 @@ function BentoSection() {
             graphic={
               <div className="h-80 bg-[url(/visual-highlights/1.jpeg)] bg-cover bg-center" />
             }
-            fade={['bottom']}
             className="h-full"
           />
         </Link>
@@ -158,7 +155,6 @@ function BentoSection() {
             graphic={
               <div className="absolute inset-0 bg-[url(/visual-highlights/3.jpg)] bg-cover bg-center" />
             }
-            fade={['bottom']}
             className="h-full"
           />
         </Link>
@@ -184,7 +180,7 @@ function BentoSection() {
         </Link>
         <Link href="/research#control" className="max-lg:rounded-b-4xl lg:col-span-2 lg:rounded-br-4xl">
           <BentoCard
-            eyebrow="Learning & Optimization-based Control"
+            eyebrow="Optimal & Learning-based Control"
             title="Operate at the limits"
             description="We integrate optimization-based methods with AI-driven policies to achieve high-performance control at the physical edge."
             graphic={
