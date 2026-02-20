@@ -6,6 +6,7 @@ import { Link } from '@/components/link'
 import { LogoCloud } from '@/components/logo-cloud'
 import { DataFlywheel } from '@/components/data-flywheel'
 import { Navbar } from '@/components/navbar'
+import { GradientBackground } from '@/components/gradient'
 import { Heading } from '@/components/text'
 import type { Metadata } from 'next'
 import fs from 'fs'
@@ -87,14 +88,14 @@ function FeatureSection({ images }: { images: string[] }) {
 
 function ContactUs() {
   return (
-    <div className="mx-2 mt-8 mb-24 rounded-4xl bg-gray-900 bg-[url(/dot-texture.svg)] py-24">
+    <div className="mt-8 mb-2 bg-gray-900 bg-[url(/dot-texture.svg)] py-16">
       <Container>
-        <div className="grid grid-cols-1 items-center justify-items-center gap-12 lg:grid-cols-2">
-          <div className="flex items-center justify-center">
-            <figure className="flex max-w-xl flex-col max-lg:text-center lg:text-left">
+        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+          <div>
+            <figure className="flex max-w-xl flex-col text-left">
               <div className="tracking-tight text-white">
                 <p className="text-3xl font-bold lg:text-4xl">Contact Us</p>
-                <p className="mt-4 text-xl lg:text-2xl">
+                <p className="mt-4 text-base lg:text-lg">
                   Autonomous Systems Laboratory<br />
                   Stanford University<br />
                   Department of Aeronautics &amp; Astronautics<br />
@@ -105,13 +106,13 @@ function ContactUs() {
               </div>
             </figure>
           </div>
-          <div className="w-full max-w-sm lg:w-[420px]">
+          <div className="w-full ml-auto">
             <div className="-m-2 rounded-4xl bg-white/15 shadow-[inset_0_0_2px_1px_#ffffff4d] ring-1 ring-black/5">
               <div className="rounded-4xl p-2 shadow-md shadow-black/5">
                 <div className="overflow-hidden rounded-3xl shadow-2xl outline outline-1 -outline-offset-1 outline-black/10">
                   <iframe
                     width="100%"
-                    height="380"
+                    height="320"
                     style={{ border: 0 }}
                     loading="lazy"
                     allowFullScreen
@@ -199,6 +200,7 @@ export default function Home() {
 
   return (
     <div className="overflow-hidden">
+      <GradientBackground />
       <Hero />
       <main>
         <div className="py-16">

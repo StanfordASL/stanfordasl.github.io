@@ -5,8 +5,9 @@ import {
   DisclosureButton,
   DisclosurePanel,
 } from '@headlessui/react'
-import { Bars2Icon } from '@heroicons/react/24/solid'
+import { Bars2Icon, HomeIcon } from '@heroicons/react/24/solid'
 import { motion } from 'framer-motion'
+import { usePathname } from 'next/navigation'
 import { Link } from './link'
 import { Logo } from './logo'
 import { PlusGrid, PlusGridItem, PlusGridRow } from './plus-grid'
@@ -15,12 +16,32 @@ const links = [
   { href: '/research', label: 'Research' },
   { href: '/publications', label: 'Publications' },
   { href: '/team', label: 'Team' },
-  { href: '/faq', label: 'Joining' },
+  { href: '/faq', label: 'Join' },
 ]
 
-function DesktopNav({ isLight = false }: { isLight?: boolean }) {
+function DesktopNav({
+  isLight = false,
+  showHomeShortcut = false,
+}: {
+  isLight?: boolean
+  showHomeShortcut?: boolean
+}) {
   return (
     <nav className="relative hidden lg:flex">
+      {showHomeShortcut && (
+        <PlusGridItem className="relative flex">
+          <Link
+            href="/"
+            title="Home"
+            aria-label="Home"
+            className={`flex items-center px-3 py-3 text-base font-medium bg-blend-multiply ${
+              isLight ? 'text-white' : 'text-gray-950 data-hover:bg-black/2.5'
+            }`}
+          >
+            <HomeIcon className="size-4" />
+          </Link>
+        </PlusGridItem>
+      )}
       {links.map(({ href, label }) => (
         <PlusGridItem key={href} className="relative flex">
           <Link
@@ -50,11 +71,21 @@ function MobileNavButton({ isLight = false }: { isLight?: boolean }) {
   )
 }
 
-function MobileNav({ isLight = false }: { isLight?: boolean }) {
+function MobileNav({
+  isLight = false,
+  showHomeShortcut = false,
+}: {
+  isLight?: boolean
+  showHomeShortcut?: boolean
+}) {
+  const mobileLinks = showHomeShortcut
+    ? [{ href: '/', label: 'Home', iconOnly: true }, ...links.map((item) => ({ ...item, iconOnly: false }))]
+    : links.map((item) => ({ ...item, iconOnly: false }))
+
   return (
     <DisclosurePanel className="lg:hidden">
       <div className="flex flex-col gap-6 py-4">
-        {links.map(({ href, label }, linkIndex) => (
+        {mobileLinks.map(({ href, label, iconOnly }, linkIndex) => (
           <motion.div
             initial={{ opacity: 0, rotateX: -90 }}
             animate={{ opacity: 1, rotateX: 0 }}
@@ -66,13 +97,18 @@ function MobileNav({ isLight = false }: { isLight?: boolean }) {
             key={href}
           >
             <Link href={href} className={`text-base font-medium ${isLight ? 'text-white' : 'text-gray-950'}`}>
-              {label}
+              {iconOnly ? (
+                <span className="inline-flex items-center">
+                  <HomeIcon className="size-4" />
+                </span>
+              ) : (
+                label
+              )}
             </Link>
           </motion.div>
         ))}
       </div>
       <div className="absolute left-1/2 w-screen -translate-x-1/2">
-        <div className="absolute inset-x-0 top-0 border-t border-black/5" />
         <div className="absolute inset-x-0 top-2 border-t border-black/5" />
       </div>
     </DisclosurePanel>
@@ -80,6 +116,9 @@ function MobileNav({ isLight = false }: { isLight?: boolean }) {
 }
 
 export function Navbar({ banner, isLight = false }: { banner?: React.ReactNode; isLight?: boolean }) {
+  const pathname = usePathname()
+  const showHomeShortcut = pathname !== '/'
+
   return (
     <Disclosure as="header" className="pt-12 sm:pt-16">
       <PlusGrid>
@@ -96,11 +135,11 @@ export function Navbar({ banner, isLight = false }: { banner?: React.ReactNode; 
               </div>
             )}
           </div>
-          <DesktopNav isLight={isLight} />
+          <DesktopNav isLight={isLight} showHomeShortcut={showHomeShortcut} />
           <MobileNavButton isLight={isLight} />
         </PlusGridRow>
       </PlusGrid>
-      <MobileNav isLight={isLight} />
+      <MobileNav isLight={isLight} showHomeShortcut={showHomeShortcut} />
     </Disclosure>
   )
 }

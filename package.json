@@ -16,6 +16,7 @@
     "feed": "^5.1.0",
     "framer-motion": "^12.23.11",
     "gray-matter": "^4.0.3",
+    "motion-plus": "https://api.motion.dev/registry.tgz?package=motion-plus&version=2.11.0&token=5fe4a3d0943ff8c7f57974e3bd5a4c45b285c112e064e8f2cfe8b885c9c1d27a",
     "next": "15.4.4",
     "react": "^19",
     "react-dom": "^19",

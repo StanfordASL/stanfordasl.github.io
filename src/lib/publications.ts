@@ -8,10 +8,12 @@ export interface Publication {
   type: string
   title: string
   authors: string[]
+  authorsDisplay: string
   year: number | null
   month: number
   keywords: string[]
   citation: string
+  venue?: string
   abstract?: string
   bibtex?: string
   status?: string
@@ -107,29 +109,14 @@ function splitBibEntries(source: string): BibEntry[] {
 
     const bodyStart = i
     let depth = 1
-    let inQuote = false
-    let escaped = false
-
     while (i < source.length && depth > 0) {
       const ch = source[i]
-      if (inQuote) {
-        if (escaped) {
-          escaped = false
-        } else if (ch === '\\') {
-          escaped = true
-        } else if (ch === '"') {
-          inQuote = false
-        }
-      } else {
-        if (ch === '"' && !isEscaped(source, i)) {
-          inQuote = true
-        } else if (ch === open) {
-          depth += 1
-        } else if (ch === close) {
-          depth -= 1
-          if (depth === 0) {
-            break
-          }
+      if (ch === open) {
+        depth += 1
+      } else if (ch === close) {
+        depth -= 1
+        if (depth === 0) {
+          break
         }
       }
       i += 1
@@ -229,7 +216,7 @@ function parseValue(body: string, start: number): { value: string; nextIndex: nu
         inQuote = false
       }
     } else {
-      if (ch === '"' && !isEscaped(body, i)) {
+      if (ch === '"' && depth === 0 && !isEscaped(body, i)) {
         inQuote = true
       } else if (ch === '{') {
         depth += 1
@@ -265,7 +252,7 @@ function findTopLevelDelimiter(text: string, delimiter: string): number {
       continue
     }
 
-    if (ch === '"' && !isEscaped(text, i)) {
+    if (ch === '"' && depth === 0 && !isEscaped(text, i)) {
       inQuote = true
       continue
     }
@@ -653,6 +640,21 @@ function formatCitation(entry: BibEntry, status?: string): string {
   return citationWithStatus([authors, title, venue, year], status)
 }
 
+function extractVenue(entry: BibEntry): string {
+  const f = entry.fields
+  const type = entry.type
+
+  if (type === 'phdthesis') {
+    return cleanValue(f.school || 'Ph.D. dissertation')
+  }
+
+  if (type === 'techreport') {
+    return cleanValue(f.institution || 'Tech. Rep.')
+  }
+
+  return cleanValue(f.journal || f.booktitle || f.publisher || '')
+}
+
 function toPublication(entry: BibEntry): Publication {
   const keywords = toKeywords(entry.fields.keywords ?? '')
   const year = Number.parseInt(entry.fields.year ?? '', 10)
@@ -668,10 +670,12 @@ function toPublication(entry: BibEntry): Publication {
     type: entry.type,
     title: cleanValue(entry.fields.title ?? ''),
     authors: splitAuthors(entry.fields.author ?? ''),
+    authorsDisplay: formatAuthors(entry.fields.author ?? ''),
     year: Number.isFinite(year) ? year : null,
     month: parseMonth(entry.fields.month ?? ''),
     keywords,
     citation: formatCitation(entry, status),
+    venue: extractVenue(entry) || undefined,
     abstract: abstract || undefined,
     bibtex: entry.raw || undefined,
     status,

@@ -4,7 +4,7 @@ title: "Luis A. Pabon"
 last: "Pabon"
 date: 2023-09-18 00:00:00 -0700
 position: phd
-excerpt: "Data-driven control of high-dimensional systems"
+excerpt: "Trustworthy world models for autonomy"
 img: LuisPabon.jpg
 email: lpabon@stanford.edu
 linkedin: luis-p

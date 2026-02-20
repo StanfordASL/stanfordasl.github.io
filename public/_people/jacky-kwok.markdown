@@ -4,7 +4,7 @@ title: "Jacky Kwok"
 last:  "Kwok"
 date:  2025-07-07 00:00:00 -0700
 position: phd
-excerpt: "Robot learning, Reasoning & Test-time Scaling"
+excerpt: "Robot learning, reasoning & test-time scaling"
 img: jkwok.jpeg
 email: jackyk02@stanford.edu
 # github:

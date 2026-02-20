@@ -4,7 +4,7 @@ title: "Pranit Mohnot"
 last:  "Mohnot"
 date:  2025-04-30 00:00:00 -0700
 position: phd
-excerpt: "Learning-based Control"
+excerpt: "Learning-based control"
 img: pranit.png
 email: pmohnot@stanford.edu
 linkedin: https://www.linkedin.com/in/pranit-mohnot/
