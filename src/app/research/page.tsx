@@ -1,4 +1,5 @@
 import { Container } from '@/components/container'
+import { AutonomyStackDiagram } from '@/components/autonomy-stack-diagram'
 import { Footer } from '@/components/footer'
 import { GradientBackground } from '@/components/gradient'
 import { DataFlywheel } from '@/components/data-flywheel'
@@ -9,7 +10,7 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Research',
   description:
-    'Explore the five core research thrusts of the Autonomous Systems Lab at Stanford University.',
+    'Explore the six core research thrusts of the Autonomous Systems Lab at Stanford University.',
 }
 
 function Header() {
@@ -20,10 +21,10 @@ function Header() {
         <div className="relative px-8 py-24 sm:px-16">
           <Heading as="h1" dark>Research</Heading>
           <p className="mt-6 max-w-3xl text-2xl font-medium text-gray-200">
-            Our research is organized around five core thrusts that together span
+            Our research is organized around six core thrusts that together span
             the full autonomy stack — from foundational models and scalable
-            backbones, to safety, data-driven improvement, and high-performance
-            control.
+            backbones, to safety, data-driven improvement, high-performance
+            control, and application-driven deployment.
           </p>
         </div>
       </div>
@@ -52,7 +53,7 @@ function ThrustSection({
 }) {
   return (
     <div id={id} className="scroll-mt-24">
-      <Container className="py-16">
+      <Container className="py-28">
         <div className="grid grid-cols-1 items-stretch gap-12 lg:grid-cols-2">
           <div className={`${reverse ? 'lg:order-2' : ''} [&>*]:h-full [&>*>img]:h-full [&>*>img]:object-cover`}>
             {graphic}
@@ -73,9 +74,9 @@ function ThrustSection({
               >
                 Representative Papers
               </p>
-              <ul className="mt-3 space-y-1.5">
+              <ul className="mt-3 space-y-2">
                 {papers.map((paper) => (
-                  <li key={`${id}-${paper.title}`} className="flex gap-2 text-sm/6">
+                  <li key={`${id}-${paper.title}`} className="flex gap-2 text-sm/5">
                     <span className={`mt-0.5 shrink-0 ${dark ? 'text-gray-500' : 'text-gray-400'}`}>•</span>
                     <span>
                       <a
@@ -144,7 +145,7 @@ export default function Research() {
         ]}
         graphic={
           <div className="overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/10">
-            <img alt="" src="/visual-highlights/1.jpeg" className="w-full object-cover" />
+            <img alt="" src="/visual-highlights/3.jpg" className="w-full object-cover" />
           </div>
         }
       />
@@ -182,9 +183,7 @@ export default function Research() {
           dark
           reverse
           graphic={
-            <div className="overflow-hidden rounded-2xl shadow-lg ring-1 ring-white/10">
-              <img alt="" src="/visual-highlights/3.jpg" className="w-full object-cover" />
-            </div>
+            <AutonomyStackDiagram />
           }
         />
       </div>
@@ -220,7 +219,7 @@ export default function Research() {
         ]}
         graphic={
           <div className="overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/10">
-            <img alt="" src="/visual-highlights/4.jpg" className="w-full object-cover" />
+            <img alt="" src="/visual-highlights/5.JPG" className="w-full object-cover" />
           </div>
         }
       />
@@ -258,7 +257,9 @@ export default function Research() {
           dark
           reverse
           graphic={
-            <DataFlywheel className="scale-[1.2]" />
+            <div className="overflow-hidden rounded-2xl shadow-lg ring-1 ring-white/10">
+              <DataFlywheel className="h-full w-full origin-center scale-[0.92]" />
+            </div>
           }
         />
       </div>
@@ -294,10 +295,50 @@ export default function Research() {
         ]}
         graphic={
           <div className="overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/10">
-            <img alt="" src="/visual-highlights/5.JPG" className="w-full object-cover" />
+            <img alt="" src="/visual-highlights/2.jpg" className="w-full object-cover" />
           </div>
         }
       />
+
+      {/* Thrust 6: Applications — dark band */}
+      <div className="bg-gray-900 bg-[url(/dot-texture.svg)] py-8">
+        <ThrustSection
+          id="applications"
+          eyebrow="Thrust 6"
+          title="Applied Autonomy"
+          description="We deploy autonomy in high-impact real-world settings, including unconventional space robotics, space foundation-model workflows, robotic manipulation, aerospace and defense mission scenarios, soft robots, quadruped navigation, and autonomous vehicles."
+          papers={[
+            {
+              title:
+                'Locomotion as manipulation with ReachBot',
+              venue: 'Science Robotics',
+              year: '2024',
+              url: 'https://www.science.org/doi/abs/10.1126/scirobotics.adi9762',
+            },
+            {
+              title:
+                'Testing Gecko-Inspired Adhesives with Astrobee Aboard the ISS',
+              venue: 'IEEE Robotics and Automation Magazine',
+              year: '2022',
+              url: 'https://ieeexplore.ieee.org/document/9783137',
+            },
+            {
+              title:
+                'Realistic Extreme Behavior Generation for Improved AV Testing',
+              venue: 'IEEE ICRA',
+              year: '2025',
+              url: 'https://arxiv.org/pdf/2409.10669',
+            },
+          ]}
+          dark
+          reverse
+          graphic={
+            <div className="overflow-hidden rounded-2xl shadow-lg ring-1 ring-white/10">
+              <img alt="" src="/visual-highlights/1.jpeg" className="w-full object-cover" />
+            </div>
+          }
+        />
+      </div>
 
       <Footer />
     </main>

@@ -1,15 +1,15 @@
 'use client'
 
 import { clsx } from 'clsx'
-import { motion } from 'framer-motion'
 
-// Layout constants
 const CX = 200
 const CY = 155
-const R = 105
-const CHEVRON_R = R
+const R = 106
 const PILL_W = 130
 const PILL_H = 36
+
+const CYCLE_S = 7.2
+const PHASE_S = CYCLE_S / 6
 
 // Heroicons 24x24 outline paths
 const ICONS = {
@@ -26,45 +26,17 @@ const ICONS = {
     'M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z',
 } as const
 
-// Node definitions — clockwise from top
 const NODES = [
-  {
-    label: 'Deploy Policy',
-    subtitle: 'safety envelope',
-    angle: 0,
-    icon: ICONS.rocket,
-  },
-  {
-    label: 'Robot Telemetry',
-    subtitle: 'multi-modal data',
-    angle: 60,
-    icon: ICONS.signal,
-  },
-  {
-    label: 'Detect Failures',
-    subtitle: 'OOD & uncertainty',
-    angle: 120,
-    icon: ICONS.warning,
-  },
-  {
-    label: 'Curate Data',
-    subtitle: 'active learning',
-    angle: 180,
-    icon: ICONS.funnel,
-  },
-  {
-    label: 'Train & Validate',
-    subtitle: 'policy & perception',
-    angle: 240,
-    icon: ICONS.cpu,
-  },
-  {
-    label: 'Release Gate',
-    subtitle: 'sim → HIL → rollout',
-    angle: 300,
-    icon: ICONS.shield,
-  },
+  { label: 'Deploy Policy', subtitle: 'safety envelope', angle: 0, icon: ICONS.rocket },
+  { label: 'Robot Telemetry', subtitle: 'multi-modal data', angle: 60, icon: ICONS.signal },
+  { label: 'Detect Failures', subtitle: 'OOD & uncertainty', angle: 120, icon: ICONS.warning },
+  { label: 'Curate Data', subtitle: 'active learning', angle: 180, icon: ICONS.funnel },
+  { label: 'Train & Validate', subtitle: 'policy & perception', angle: 240, icon: ICONS.cpu },
+  { label: 'Release Gate', subtitle: 'sim → HIL → rollout', angle: 300, icon: ICONS.shield },
 ] as const
+
+// Midpoints between the six stages.
+const CHEVRON_ANGLES = [320, 40, 90, 140, 220, 270] as const
 
 function toRad(deg: number) {
   return (deg * Math.PI) / 180
@@ -77,93 +49,17 @@ function polar(angleDeg: number, r = R) {
   }
 }
 
-// --- Subcomponents ---
-
-function Rings() {
-  const rings = [
-    // { r: R + 40, opacity: 0.2, delay: 0.4 },
-    { r: R, opacity: 0.34, delay: 0.2 },
-    // { r: R - 40, opacity: 0.24, delay: 0 },
-  ]
-
-  return (
-    <>
-      {rings.map(({ r, opacity, delay }, i) => (
-        <motion.circle
-          key={i}
-          cx={CX}
-          cy={CY}
-          fill="none"
-          stroke="var(--fw-ring)"
-          strokeWidth={2}
-          variants={{
-            idle: { r, opacity },
-            active: {
-              r: [r, r + 3, r],
-              opacity: [opacity, opacity + 0.1, opacity],
-              transition: {
-                duration: 2.5,
-                repeat: Infinity,
-                ease: 'easeInOut',
-                delay,
-              },
-            },
-          }}
-        />
-      ))}
-    </>
-  )
-}
-
 function Chevron({ angle, index }: { angle: number; index: number }) {
-  const { x, y } = polar(angle, CHEVRON_R)
-
-  // Triangle points along +x in local coordinates; group rotation aligns tangent direction.
-  const raw = [
-    [-5, -3.5],
-    [6, 0],
-    [-5, 3.5],
-  ] as const
-  const pts = raw
-    .map(([px, py]) => `${px},${py}`)
-    .join(' ')
+  const { x, y } = polar(angle, R)
 
   return (
     <g transform={`translate(${x} ${y}) rotate(${angle})`}>
-      <motion.g
-        variants={{
-          idle: { opacity: 0.55, x: 0, y: 0 },
-          active: {
-            opacity: [0.55, 1, 0.55],
-            x: [0, 4, 0],
-            y: [0, -3, 0],
-            transition: {
-              y: {
-                duration: 2.5,
-                repeat: Infinity,
-                delay: 0.2,
-                ease: 'easeInOut',
-              },
-              opacity: {
-                duration: 0.8,
-                repeat: Infinity,
-                repeatDelay: 2.2,
-                delay: index * 0.5,
-                ease: 'easeInOut',
-              },
-              x: {
-                duration: 0.8,
-                repeat: Infinity,
-                repeatDelay: 2.2,
-                delay: index * 0.5,
-                ease: 'easeInOut',
-              },
-            },
-          },
-        }}
+      <g
+        className="flywheel-chevron"
+        style={{ animationDelay: `${-(index * PHASE_S)}s` }}
       >
-        <polygon points={pts} fill="var(--fw-arrow)" />
-      </motion.g>
+        <polygon points="-5,-3.5 6,0 -5,3.5" fill="var(--fw-arrow)" />
+      </g>
     </g>
   )
 }
@@ -189,23 +85,13 @@ function NodePill({
   const textX = x + 6
 
   return (
-    <motion.g
-      variants={{
-        idle: {},
-        active: {
-          scale: [1, 1.05, 1],
-          transition: {
-            duration: 0.8,
-            repeat: Infinity,
-            repeatDelay: 2.2,
-            delay: index * 0.5,
-            ease: 'easeInOut',
-          },
-        },
+    <g
+      className="flywheel-node"
+      style={{
+        transformOrigin: `${x}px ${y}px`,
+        animationDelay: `${-(index * PHASE_S)}s`,
       }}
-      style={{ transformOrigin: `${x}px ${y}px` }}
     >
-      {/* Shadow */}
       <rect
         x={x - PILL_W / 2}
         y={y - PILL_H / 2 + 1.5}
@@ -214,7 +100,6 @@ function NodePill({
         rx={PILL_H / 2}
         fill="var(--fw-shadow)"
       />
-      {/* Pill body */}
       <rect
         x={x - PILL_W / 2}
         y={y - PILL_H / 2}
@@ -225,7 +110,6 @@ function NodePill({
         stroke="var(--fw-node-border)"
         strokeWidth={1}
       />
-      {/* Icon */}
       <svg
         x={iconX}
         y={iconY}
@@ -240,7 +124,6 @@ function NodePill({
       >
         <path d={icon} />
       </svg>
-      {/* Label */}
       <text
         x={textX}
         y={y - 5}
@@ -253,7 +136,6 @@ function NodePill({
       >
         {label}
       </text>
-      {/* Subtitle */}
       <text
         x={textX}
         y={y + 9}
@@ -265,14 +147,9 @@ function NodePill({
       >
         {subtitle}
       </text>
-    </motion.g>
+    </g>
   )
 }
-
-// Chevron angles (tuned positions between nodes)
-const CHEVRON_ANGLES = [320, 40, 90, 140, 220, 270]
-
-// --- Main Component ---
 
 export function DataFlywheel({ className }: { className?: string } = {}) {
   return (
@@ -281,11 +158,9 @@ export function DataFlywheel({ className }: { className?: string } = {}) {
       className={clsx(
         'relative h-full',
         className,
-        // Light mode
         '[--fw-node-bg:#fff] [--fw-node-border:#d1d5db] [--fw-node-text:#111827]',
         '[--fw-subtitle:#6b7280] [--fw-arrow:#3b82f6] [--fw-ring:#60a5fa]',
         '[--fw-icon:#3b82f6] [--fw-shadow:rgba(0,0,0,0.06)]',
-        // Dark mode
         'group-data-dark:[--fw-node-bg:#374151] group-data-dark:[--fw-node-border:#6b7280]',
         'group-data-dark:[--fw-node-text:#f9fafb] group-data-dark:[--fw-subtitle:#d1d5db]',
         'group-data-dark:[--fw-arrow:#93c5fd] group-data-dark:[--fw-ring:#93c5fd]',
@@ -297,55 +172,45 @@ export function DataFlywheel({ className }: { className?: string } = {}) {
         className="h-full w-full"
         preserveAspectRatio="xMidYMid meet"
       >
-        {/* Decorative rings */}
-        <Rings />
+        {/* Loop structure */}
+        <circle cx={CX} cy={CY} r={R} fill="none" stroke="var(--fw-ring)" strokeWidth={2} opacity={0.24} />
+        <circle cx={CX} cy={CY} r={R} fill="none" stroke="var(--fw-ring)" strokeWidth={2.2} className="flywheel-ring-flow" />
+        <circle cx={CX} cy={CY} r={R - 38} fill="none" stroke="var(--fw-ring)" strokeWidth={1.8} opacity={0.16} />
 
-        {/* Directional chevrons between nodes */}
+        {/* Direction markers tangent to the same ring */}
         {CHEVRON_ANGLES.map((angle, i) => (
           <Chevron key={`c${i}`} angle={angle} index={i} />
         ))}
 
-        {/* Center robot icon */}
-        <motion.g
-          variants={{
-            idle: { opacity: 0.55, scale: 1 },
-            active: {
-              opacity: [0.55, 0.85, 0.55],
-              scale: [1, 1.1, 1],
-              transition: {
-                duration: 2.5,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              },
-            },
-          }}
+        {/* Hub */}
+        <g
+          className="flywheel-hub"
           style={{ transformOrigin: `${CX}px ${CY}px` }}
         >
-        <svg
-          x={CX - 16}
-          y={CY - 16}
-          width={32}
-          height={32}
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="var(--fw-ring)"
-          strokeWidth={1.5}
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M6 6a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -4" />
-          <path d="M12 2v2" />
-          <path d="M9 12v9" />
-          <path d="M15 12v9" />
-          <path d="M5 16l4 -2" />
-          <path d="M15 14l4 2" />
-          <path d="M9 18h6" />
-          <path d="M10 8v.01" />
-          <path d="M14 8v.01" />
-        </svg>
-        </motion.g>
+          <circle cx={CX} cy={CY} r={17} fill="none" stroke="var(--fw-ring)" strokeWidth={1.6} opacity={0.5} />
+          <svg
+            x={CX - 12}
+            y={CY - 12}
+            width={24}
+            height={24}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="var(--fw-ring)"
+            strokeWidth={1.5}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="M6 6a2 2 0 0 1 2 -2h8a2 2 0 0 1 2 2v4a2 2 0 0 1 -2 2h-8a2 2 0 0 1 -2 -2l0 -4" />
+            <path d="M12 2v2" />
+            <path d="M9 12v8" />
+            <path d="M15 12v8" />
+            <path d="M9 18h6" />
+            <path d="M10 8v.01" />
+            <path d="M14 8v.01" />
+          </svg>
+        </g>
 
-        {/* Node pills */}
+        {/* Stages */}
         {NODES.map((node, i) => {
           const { x, y } = polar(node.angle)
           return (
@@ -361,6 +226,86 @@ export function DataFlywheel({ className }: { className?: string } = {}) {
           )
         })}
       </svg>
+
+      <style jsx>{`
+        @keyframes flywheel-ring {
+          from {
+            stroke-dashoffset: 0;
+          }
+          to {
+            stroke-dashoffset: -176;
+          }
+        }
+
+        @keyframes flywheel-step {
+          0%,
+          8%,
+          100% {
+            opacity: 0.76;
+            transform: scale(1);
+          }
+          14% {
+            opacity: 1;
+            transform: scale(1.045);
+          }
+        }
+
+        @keyframes flywheel-chevron {
+          0%,
+          8%,
+          100% {
+            opacity: 0.42;
+            transform: translateX(0px);
+          }
+          14% {
+            opacity: 0.95;
+            transform: translateX(2.5px);
+          }
+        }
+
+        @keyframes flywheel-hub {
+          0%,
+          100% {
+            opacity: 0.6;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.95;
+            transform: scale(1.06);
+          }
+        }
+
+        .flywheel-ring-flow {
+          stroke-dasharray: 14 10;
+          opacity: 0.62;
+          animation: flywheel-ring ${CYCLE_S}s linear infinite;
+          will-change: stroke-dashoffset;
+        }
+
+        .flywheel-node {
+          animation: flywheel-step ${CYCLE_S}s ease-in-out infinite;
+          will-change: transform, opacity;
+        }
+
+        .flywheel-chevron {
+          animation: flywheel-chevron ${CYCLE_S}s ease-in-out infinite;
+          will-change: transform, opacity;
+        }
+
+        .flywheel-hub {
+          animation: flywheel-hub 3.6s ease-in-out infinite;
+          will-change: transform, opacity;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .flywheel-ring-flow,
+          .flywheel-node,
+          .flywheel-chevron,
+          .flywheel-hub {
+            animation: none;
+          }
+        }
+      `}</style>
     </div>
   )
 }

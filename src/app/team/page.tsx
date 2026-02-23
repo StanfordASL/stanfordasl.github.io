@@ -217,14 +217,14 @@ function Alumni() {
       </Heading>
       <ul
         role="list"
-        className="mx-auto mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
+        className="mx-auto mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
       >
         {alumni.map((person) => (
           <li key={person.slug} className="flex items-center gap-4">
             <img
               alt={person.title}
               src={`/_people/people-imgs/${person.img}`}
-              className="size-12 rounded-full object-cover"
+              className="size-16 rounded-full object-cover"
             />
             <div className="text-sm/6">
               <h3 className="font-medium">
@@ -300,17 +300,17 @@ function VisitingStudents() {
       </Heading>
       <ul
         role="list"
-        className="mt-8 grid grid-cols-1 gap-x-10 gap-y-3 md:grid-cols-2"
+        className="mt-8 grid grid-cols-1 gap-x-10 gap-y-2 md:grid-cols-2"
       >
         {entries.map((entry, index) => (
           <li
             key={`${entry.name}-${index}`}
-            className="border-b border-gray-200/80 pb-3"
+            className="border-b border-gray-200/80 pb-1.5"
           >
             <h3 className="text-sm font-semibold tracking-tight text-gray-950">
               {entry.name}
             </h3>
-            <p className="mt-0.5 text-sm text-gray-600">{entry.affiliation}</p>
+            <p className="text-sm text-gray-600">{entry.affiliation}</p>
           </li>
         ))}
       </ul>

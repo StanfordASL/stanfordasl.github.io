@@ -39,14 +39,14 @@ function TwitterIcon({ className }: { className?: string }) {
   )
 }
 
-export function LogoCloud({
+export function SocialLinks({
   className,
 }: React.ComponentPropsWithoutRef<'div'>) {
   return (
     <div
       className={clsx(
         className,
-        'flex justify-center gap-x-12 sm:gap-x-16 lg:gap-x-24',
+        'flex gap-x-8 sm:gap-x-10',
       )}
     >
       <a

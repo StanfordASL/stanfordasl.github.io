@@ -22,6 +22,128 @@ function toYearAnchorId(sectionKey: string, yearLabel: string) {
   return `${sectionKey}-year-${slug || 'unknown'}`
 }
 
+function findTopLevelDelimiter(text: string, delimiter: string): number {
+  let depth = 0
+  let inQuote = false
+  let escaped = false
+
+  for (let i = 0; i < text.length; i += 1) {
+    const ch = text[i]
+    if (inQuote) {
+      if (escaped) {
+        escaped = false
+      } else if (ch === '\\') {
+        escaped = true
+      } else if (ch === '"') {
+        inQuote = false
+      }
+      continue
+    }
+
+    if (ch === '"') {
+      inQuote = true
+      continue
+    }
+    if (ch === '{') {
+      depth += 1
+      continue
+    }
+    if (ch === '}') {
+      if (depth > 0) depth -= 1
+      continue
+    }
+    if (ch === delimiter && depth === 0) {
+      return i
+    }
+  }
+
+  return -1
+}
+
+function splitTopLevel(text: string, delimiter: string): string[] {
+  const parts: string[] = []
+  let start = 0
+
+  while (start <= text.length) {
+    const relative = findTopLevelDelimiter(text.slice(start), delimiter)
+    if (relative === -1) {
+      parts.push(text.slice(start))
+      break
+    }
+    const end = start + relative
+    parts.push(text.slice(start, end))
+    start = end + 1
+  }
+
+  return parts
+}
+
+function fieldName(segment: string): string {
+  const trimmed = segment.trimStart()
+  let i = 0
+  while (i < trimmed.length && /[A-Za-z0-9_-]/.test(trimmed[i])) {
+    i += 1
+  }
+  return trimmed.slice(0, i).toLowerCase()
+}
+
+function stripBibtexField(raw: string, targetField: string): string {
+  const text = raw.trim()
+  if (!text.startsWith('@')) return raw
+
+  const openIdx = text.search(/[({]/)
+  if (openIdx === -1) return raw
+
+  const open = text[openIdx]
+  const close = open === '{' ? '}' : ')'
+
+  let closeIdx = -1
+  let depth = 0
+  let inQuote = false
+  let escaped = false
+  for (let i = openIdx; i < text.length; i += 1) {
+    const ch = text[i]
+    if (inQuote) {
+      if (escaped) escaped = false
+      else if (ch === '\\') escaped = true
+      else if (ch === '"') inQuote = false
+      continue
+    }
+
+    if (ch === '"') {
+      inQuote = true
+      continue
+    }
+    if (ch === open) {
+      depth += 1
+    } else if (ch === close) {
+      depth -= 1
+      if (depth === 0) {
+        closeIdx = i
+        break
+      }
+    }
+  }
+  if (closeIdx === -1) return raw
+
+  const body = text.slice(openIdx + 1, closeIdx)
+  const keyComma = findTopLevelDelimiter(body, ',')
+  if (keyComma === -1) return raw
+
+  const key = body.slice(0, keyComma)
+  const fieldsBody = body.slice(keyComma + 1)
+  const kept = splitTopLevel(fieldsBody, ',').filter(
+    (segment) => fieldName(segment) !== targetField.toLowerCase(),
+  )
+
+  const rebuiltBody = key + (kept.length > 0 ? `,${kept.join(',')}` : '')
+  return `${text.slice(0, openIdx + 1)}${rebuiltBody}${text.slice(closeIdx)}`
+}
+
+function displayBibtex(raw: string) {
+  return stripBibtexField(raw, 'abstract')
+}
+
 function PublicationDisclosure({
   label,
   icon,
@@ -128,7 +250,7 @@ function SectionContent({ section }: { section: PublicationSection }) {
                           }
                         >
                           <pre className="mt-2 max-h-56 overflow-auto rounded-lg border border-gray-200 bg-gray-50 p-3 text-[11px] leading-relaxed text-gray-700">
-                            {item.bibtex}
+                            {displayBibtex(item.bibtex)}
                           </pre>
                         </PublicationDisclosure>
                       )}
