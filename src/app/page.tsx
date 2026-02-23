@@ -3,8 +3,9 @@ import { Container } from '@/components/container'
 import { Footer } from '@/components/footer'
 import { ImageCarousel } from '@/components/image-carousel'
 import { Link } from '@/components/link'
-import { LogoCloud } from '@/components/logo-cloud'
+import { SocialLinks } from '@/components/logo-cloud'
 import { DataFlywheel } from '@/components/data-flywheel'
+import { AutonomyStackDiagram } from '@/components/autonomy-stack-diagram'
 import { Navbar } from '@/components/navbar'
 import { GradientBackground } from '@/components/gradient'
 import { Heading } from '@/components/text'
@@ -36,19 +37,21 @@ function getVisualHighlights() {
 
 function Hero() {
   return (
-    <div className="relative flex min-h-dvh flex-col">
+    <div className="relative">
+      <GradientBackground />
       <Container className="relative">
         <Navbar />
       </Container>
-      <Container className="relative flex flex-1 items-center">
+      <Container className="relative mt-16 pb-16">
         <div className="grid grid-cols-1 items-center gap-8 w-full xl:grid-cols-2">
           <div className="relative z-10 text-center xl:text-left">
-            <h1 className="font-display text-6xl/[0.9] font-medium tracking-tight text-balance text-gray-950 sm:text-8xl/[0.8] md:text-9xl/[0.8]">
+            <h1 className="font-display font-medium tracking-tight text-balance text-gray-950 text-[110px] leading-[0.8]">
               Autonomous Systems Lab
             </h1>
-            <p className="mt-8 mx-auto xl:mx-0 max-w-lg text-xl/7 font-medium text-gray-600 sm:text-2xl/8">
+            <p className="mt-8 xl:mx-0 max-w-lg text-xl/7 font-medium text-gray-600 sm:text-2xl/8">
               Bringing world-scale intelligence to real-world machines.
             </p>
+            <SocialLinks className="mt-8" />
           </div>
           <div className="flex justify-center xl:justify-end xl:-mr-32">
             <video
@@ -63,25 +66,22 @@ function Hero() {
           </div>
         </div>
       </Container>
-      <Container className="pb-8">
-        <LogoCloud />
-      </Container>
     </div>
   )
 }
 
 function FeatureSection({ images }: { images: string[] }) {
   return (
-    <div className="overflow-hidden">
-      <Container className="py-24">
+    <div className="overflow-hidden pt-8 pb-24">
+      <Container>
         <Heading as="h2" className="max-w-3xl">
           Visual Highlights
         </Heading>
-        <ImageCarousel
-          images={images}
-          className="mt-16"
-        />
       </Container>
+      <ImageCarousel
+        images={images}
+        className="mt-16 w-full"
+      />
     </div>
   )
 }
@@ -136,41 +136,41 @@ function BentoSection() {
         Research Thrusts
       </Heading>
 
-      <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-6 lg:grid-rows-2">
-        <Link href="/research#foundations" className="max-lg:rounded-t-4xl lg:col-span-3 lg:rounded-tl-4xl">
+      <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
+        <Link href="/research#foundations">
           <BentoCard
             eyebrow="Foundation Models"
             title="Build the next autonomy stack"
             description="We develop foundation models tailored for embodied intelligence, forming the core architecture for scalable, adaptive, and robust autonomous systems."
             graphic={
-              <div className="h-80 bg-[url(/visual-highlights/1.jpeg)] bg-cover bg-center" />
+              <div className="h-80 bg-[url(/visual-highlights/3.jpg)] bg-cover bg-center" />
             }
             className="h-full"
           />
         </Link>
-        <Link href="/research#backbone" className="lg:col-span-3 lg:rounded-tr-4xl">
+        <Link href="/research#backbone">
           <BentoCard
             eyebrow="Structured Policy Learning"
             title="From models to machines"
             description="We study how large-scale backbones can drive better robotic behavior, developing scaling laws and structured policies that translate directly to real-world performance."
             graphic={
-              <div className="absolute inset-0 bg-[url(/visual-highlights/3.jpg)] bg-cover bg-center" />
+              <AutonomyStackDiagram className="h-full" />
             }
             className="h-full"
           />
         </Link>
-        <Link href="/research#safety" className="lg:col-span-2 lg:rounded-bl-4xl">
+        <Link href="/research#safety">
           <BentoCard
             eyebrow="Trustworthiness in Physical AI"
             title="Safe and reliable autonomy"
             description="Our research integrates monitoring, guardrailing, and alignment techniques that keep embodied systems safe, predictable, and reliable in the real world."
             graphic={
-              <div className="absolute inset-0 bg-[url(/visual-highlights/4.jpg)] bg-cover bg-center" />
+              <div className="absolute inset-0 bg-[url(/visual-highlights/5.JPG)] bg-cover bg-center" />
             }
             className="h-full"
           />
         </Link>
-        <Link href="/research#data-flywheel" className="lg:col-span-2">
+        <Link href="/research#data-flywheel">
           <BentoCard
             eyebrow="Data Flywheels for Robotics"
             title="Self-improving autonomy"
@@ -179,13 +179,24 @@ function BentoSection() {
             className="h-full"
           />
         </Link>
-        <Link href="/research#control" className="max-lg:rounded-b-4xl lg:col-span-2 lg:rounded-br-4xl">
+        <Link href="/research#control">
           <BentoCard
             eyebrow="Optimal & Learning-based Control"
             title="Operate at the limits"
             description="We integrate optimization-based methods with AI-driven policies to achieve high-performance control at the physical edge."
             graphic={
-              <div className="absolute inset-0 bg-[url(/visual-highlights/5.JPG)] bg-cover bg-center" />
+              <div className="absolute inset-0 bg-[url(/visual-highlights/2.jpg)] bg-cover bg-center" />
+            }
+            className="h-full"
+          />
+        </Link>
+        <Link href="/research#applications">
+          <BentoCard
+            eyebrow="Applied Autonomy"
+            title="Deploy in high-impact domains"
+            description="We translate methods into real systems across unconventional space robotics, manipulation, quadruped navigation, autonomous vehicles, and mission-driven aerospace applications."
+            graphic={
+              <div className="absolute inset-0 bg-[url(/visual-highlights/1.jpeg)] bg-cover bg-center" />
             }
             className="h-full"
           />
@@ -200,7 +211,6 @@ export default function Home() {
 
   return (
     <div className="overflow-hidden">
-      <GradientBackground />
       <Hero />
       <main>
         <div className="py-16">
