@@ -155,29 +155,28 @@ export default function Research() {
         <ThrustSection
           id="backbone"
           eyebrow="Thrust 2"
-          title="Structured Policy Learning"
-          description="We study how large-scale backbones can drive better robotic behavior, developing scaling laws and structured policies that translate directly to real-world performance. From models to machines, we bridge the gap between powerful pretrained representations and the embodied tasks that demand them."
+          title="Embodied AI Agents"
+          description="We extend the orchestration, planning, and world knowledge of modern agentic systems to physical robotic systems, grounding them in multi-modal perception and online interaction. From digital to physical, we bridge the gap between agents that reason about the world and robots that act within it."
           papers={[
             {
               title:
-                'From Demonstrations to Safe Deployment: Path-Consistent Safety Filtering for Diffusion Policies',
-              venue: 'IEEE ICRA',
+                'Structured World-State Reasoning for Agentic Robotic Search',
+              venue: 'CoRL (submitted)',
               year: '2026',
-              url: 'https://arxiv.org/abs/2511.06385',
+              url: '',
+            },
+            {
+              title: 'FARM: Find Anything using Relational Spatial Memory',
+              venue: 'CoRL (submitted)',
+              year: '2026',
+              url: 'https://openreview.net/forum?id=zCXivnAbeu',
             },
             {
               title:
-                'Semantic Trajectory Generation for Goal-Oriented Spacecraft Rendezvous',
-              venue: 'AIAA Scitech',
+                'SPACER: Robotic Data Scientist Framework for Actionable Failure Explanations',
+              venue: 'CoRL (submitted)',
               year: '2026',
-              url: 'https://arxiv.org/abs/2512.09111',
-            },
-            {
-              title:
-                'Generalizable Spacecraft Trajectory Generation via Multimodal Learning with Transformers',
-              venue: 'IEEE ACC',
-              year: '2025',
-              url: 'https://arxiv.org/abs/2410.11723',
+              url: '',
             },
           ]}
           dark

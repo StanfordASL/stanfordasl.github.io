@@ -150,9 +150,9 @@ function BentoSection() {
         </Link>
         <Link href="/research#backbone">
           <BentoCard
-            eyebrow="Structured Policy Learning"
-            title="From models to machines"
-            description="We study how large-scale backbones can drive better robotic behavior, developing scaling laws and structured policies that translate directly to real-world performance."
+            eyebrow="Embodied AI Agents"
+            title="From digital to physical"
+            description="We extend the orchestration, planning, and world knowledge of modern agentic systems to physical robots, grounding them in multi-modal perception and online interaction."
             graphic={
               <AutonomyStackDiagram className="h-full" />
             }
