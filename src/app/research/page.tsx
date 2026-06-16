@@ -156,7 +156,9 @@ export default function Research() {
           id="backbone"
           eyebrow="Thrust 2"
           title="Embodied AI Agents"
-          description="We extend the orchestration, planning, and world knowledge of modern agentic systems to physical robotic systems, grounding them in multi-modal perception and online interaction. From digital to physical, we bridge the gap between agents that reason about the world and robots that act within it."
+          description="Modern agentic systems can orchestrate complex work in the digital world, drawing on planning, tool use, and broad world knowledge. A natural next step is to extend these capabilities from digital tasks to physical ones, augmenting robotic systems with the same flexibility. Yet this translation is far from straightforward. Foundation models are largely trained on data that disregards the multi-modal signals central to robotics, and agentic reasoning has not been designed with embodied use cases in mind. At the same time, agentic systems excel precisely in the complex, open-ended settings that demand handling novel scenarios never encountered during training, which is exactly the regime in which future mobile robots must operate. Agentic systems therefore present a significant opportunity, alongside central difficulties.
+            
+            We develop methods that let agents control robotic embodiments, build a grounded understanding of their environments, and reason about the actions available to them. We study tool use both as a means of interacting with the physical world and as a way to resolve uncertainty by actively drawing information from the environment. Our extensive expertise in the optimization of large-scale systems offers a novel perspective on orchestration and lets us rethink reasoning in a robotic context, recognizing that embodied agents must form their understanding of the world from far richer sensory streams than VLMs or digital agentic systems. The central challenge, then, is interpreting this multi-modal input while respecting real-time compute constraints."
           papers={[
             {
               title:
