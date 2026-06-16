@@ -161,7 +161,7 @@ function BentoSection() {
         </Link>
         <Link href="/research#safety">
           <BentoCard
-            eyebrow="Trustworthiness in Physical AI"
+            eyebrow="Physical AI Safety"
             title="Safe and reliable autonomy"
             description="Our research integrates monitoring, guardrailing, and alignment techniques that keep embodied systems safe, predictable, and reliable in the real world."
             graphic={
