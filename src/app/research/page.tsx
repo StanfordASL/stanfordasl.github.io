@@ -45,7 +45,7 @@ function ThrustSection({
   id: string
   eyebrow: string
   title: string
-  description: string
+  description: React.ReactNode
   papers: { title: string; venue: string; year: string; url: string }[]
   graphic: React.ReactNode
   dark?: boolean
@@ -63,11 +63,11 @@ function ThrustSection({
             <Heading as="h3" className="mt-2 !text-3xl sm:!text-5xl" dark={dark}>
               {title}
             </Heading>
-            <p
+            <div
               className={`mt-6 max-w-xl text-base/7 ${dark ? 'text-gray-400' : 'text-gray-600'}`}
             >
               {description}
-            </p>
+            </div>
             <div className="mt-8 max-w-xl">
               <p
                 className={`text-xs font-semibold tracking-[0.16em] uppercase ${dark ? 'text-gray-300' : 'text-gray-700'}`}
@@ -231,7 +231,10 @@ export default function Research() {
           id="data-flywheel"
           eyebrow="Thrust 4"
           title="Data Flywheels for Robotics"
-          description="We design automated evaluation and data pipelines that close feedback loops and enable continuously advancing robotic systems. By turning deployment experience into training signal, we create self-improving autonomy that gets better with every interaction."
+          description={<>
+            <p>A data flywheel is a cycle of self-improvement in which robot deployment experience feeds back to improve the policies and perception models that generated it. Building an effective flywheel is a multi-stage problem. Policies are deployed within a safety envelope; each deployment generates telemetry capturing multi-modal rollout data; targeted data collection gathers data that addresses observed failure modes; curation filters out existing data causally linked to those failures; and the resulting dataset trains the next policy before redeployment. Each stage is coupled to the others: tighter safety envelopes shape the distribution of rollout data, failure attribution enables both targeted data collection and principled data curation, which together form an improved dataset to train the next policy with.</p>
+            <p className="mt-4">Our research develops the methodology to close this loop both reliably and effectively, working toward robotic systems that earn broader autonomy through accumulated deployment experience.</p>
+          </>}
           papers={[
             {
               title:

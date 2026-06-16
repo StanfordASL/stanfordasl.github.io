@@ -29,9 +29,9 @@ const ICONS = {
 const NODES = [
   { label: 'Deploy Policy', subtitle: 'safety envelope', angle: 0, icon: ICONS.rocket },
   { label: 'Robot Telemetry', subtitle: 'multi-modal data', angle: 60, icon: ICONS.signal },
-  { label: 'Detect Failures', subtitle: 'OOD & uncertainty', angle: 120, icon: ICONS.warning },
-  { label: 'Curate Data', subtitle: 'active learning', angle: 180, icon: ICONS.funnel },
-  { label: 'Train & Validate', subtitle: 'policy & perception', angle: 240, icon: ICONS.cpu },
+  { label: 'Failure Attribution', subtitle: 'root cause analysis', angle: 120, icon: ICONS.warning },
+  { label: 'Data Shaping', subtitle: 'data collection & curation', angle: 180, icon: ICONS.funnel },
+  { label: 'Training', subtitle: 'retrained policy', angle: 240, icon: ICONS.cpu },
   { label: 'Release Gate', subtitle: 'sim → HIL → rollout', angle: 300, icon: ICONS.shield },
 ] as const
 
