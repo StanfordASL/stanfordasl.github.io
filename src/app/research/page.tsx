@@ -256,13 +256,14 @@ export default function Research() {
                 category of risk: unlike digital systems, embodied agents must act
                 under real-time constraints in a dynamic environment. A robot that
                 fails to recognize an anomaly, misinterprets a sensor reading, or
-                violates a safety constraint may present untrustworthy behavior.
-                The environments that demand capable robots — contact-rich
-                manipulation, autonomous navigation in dynamic scenes, operation
-                alongside humans — are precisely those that expose the brittleness
-                of policies trained under clean, controlled conditions. Closing the
-                gap between in-distribution performance and real-world reliability
-                is the central problem of physical AI safety.
+                violates a safety constraint may present dangerous behavior.
+                The environments that will demand the next generation of robot
+                autonomy stacks, e.g., contact-rich manipulation, autonomous
+                navigation in dynamic scenes, operation alongside humans, are
+                too unpredictable to capture all corner cases in nominal
+                training data. Closing the gap between in-distribution
+                performance and real-world reliability is the central problem
+                of physical AI safety.
               </p>
               <p className="mt-4">
                 We develop algorithms that allow robot policies to detect,

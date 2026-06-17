@@ -4,6 +4,7 @@ import { GradientBackground } from '@/components/gradient'
 import { Navbar } from '@/components/navbar'
 import { Heading } from '@/components/text'
 import type { Metadata } from 'next'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Hardware',
@@ -25,15 +26,29 @@ function RobotSection({
   name,
   description,
   papers = [],
+  imageSrc,
 }: {
   name: string
   description: React.ReactNode
   papers?: Paper[]
+  imageSrc?: string
 }) {
   return (
     <div className="border-t border-gray-100 py-20 first:border-t-0">
       <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
-        <PlaceholderImage />
+        {imageSrc ? (
+          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-gray-100 shadow-lg ring-1 ring-black/10">
+            <Image
+              src={imageSrc}
+              alt={name}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </div>
+        ) : (
+          <PlaceholderImage />
+        )}
         <div>
           <Heading as="h2" className="!text-3xl sm:!text-4xl">
             {name}
@@ -100,6 +115,7 @@ export default function Hardware() {
       <Container className="mt-16 pb-24">
         <RobotSection
           name="Unitree Go2 Quadruped"
+          imageSrc="/hardware/quad.png"
           description={
             <>
               <p>
@@ -122,6 +138,20 @@ export default function Hardware() {
               </p>
             </>
           }
+          papers={[
+            {
+              title: 'GLST: Global-Local Spatio-Temporal Memory Decomposition Framework for Online Chained-Goal Navigation',
+              url: 'https://openreview.net/forum?id=xyFvvMLQRo#discussion',
+            },
+            {
+              title: 'FARM: Find Anything using Relational Spatial Memory',
+              url: 'https://openreview.net/forum?id=zCXivnAbeu#discussion',
+            },
+            {
+              title: 'Structured World-State Reasoning for Agentic Robotic Search',
+              url: 'https://openreview.net/forum?id=knMWgjCZvA#discussion',
+            },
+          ]}
         />
 
         <RobotSection
@@ -129,23 +159,24 @@ export default function Hardware() {
           description={
             <>
               <p>
-                The Unitree G1 is a full-size humanoid robot with 23 degrees
-                of freedom, capable of standing, walking, and performing
-                dexterous whole-body tasks. Its human-like morphology makes
-                it well-suited for operating in environments designed for
-                people, while its high degree-of-freedom kinematic structure
-                presents rich challenges for whole-body control, motion
-                imitation, and safe policy deployment.
+                The United G1 is a full-size humanoid robot with 29 degrees of
+                freedom, capable of standing, walking, and performing dextrous
+                whole-body tasks. Its human-like form factor is well-suited for
+                operation in environments designed for people, and its high
+                degree-of-freedom kinematic structure and hybrid dynamics pose
+                rich challenges for whole-body control, motion imitation, and
+                safe policy deployment.
               </p>
               <p>
-                At ASL, we use the G1 to develop constraint-aware control
-                frameworks that combine reinforcement learning with real-time
-                safety guarantees. Our work enables policies trained entirely
-                in simulation to satisfy complex physical constraints — joint
-                limits, collision avoidance, and center-of-mass stability —
-                at runtime on hardware, without retraining. This makes it
-                possible to retrofit safety to any learned policy and adapt
-                constraints on the fly as task requirements change.
+                At ASL, we use the G1 as a platform to develop and evaluate
+                constraint-aware control frameworks that combine reinforcement
+                learning with real-time safety filters. Our work enables
+                policies trained entirely in simulation to satisfy complex
+                physical constraints (including joint limits, collision
+                avoidance, and center-of-mass stability) at runtime without
+                retraining. This makes it possible to retrofit any learned
+                policy with safety, and adapt to constraints on the fly, as
+                task requirements change.
               </p>
             </>
           }
@@ -161,6 +192,7 @@ export default function Hardware() {
 
         <RobotSection
           name="FreeFlyer"
+          imageSrc="/hardware/ff.png"
           description={
             <>
               <p>
