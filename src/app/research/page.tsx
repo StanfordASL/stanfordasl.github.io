@@ -364,44 +364,82 @@ export default function Research() {
         }
       />
 
-      {/* Thrust 6: Applications — dark band */}
+      {/* Thrust 6: Applications — dark band, landscape layout */}
       <div className="bg-gray-900 bg-[url(/dot-texture.svg)] py-8">
-        <ThrustSection
-          id="applications"
-          eyebrow="Thrust 6"
-          title="Applied Autonomy"
-          description="We deploy autonomy in high-impact real-world settings, including unconventional space robotics, space foundation-model workflows, robotic manipulation, aerospace and defense mission scenarios, soft robots, quadruped navigation, and autonomous vehicles."
-          papers={[
-            {
-              title:
-                'Locomotion as manipulation with ReachBot',
-              venue: 'Science Robotics',
-              year: '2024',
-              url: 'https://www.science.org/doi/abs/10.1126/scirobotics.adi9762',
-            },
-            {
-              title:
-                'Testing Gecko-Inspired Adhesives with Astrobee Aboard the ISS',
-              venue: 'IEEE Robotics and Automation Magazine',
-              year: '2022',
-              url: 'https://ieeexplore.ieee.org/document/9783137',
-            },
-            {
-              title:
-                'Realistic Extreme Behavior Generation for Improved AV Testing',
-              venue: 'IEEE ICRA',
-              year: '2025',
-              url: 'https://arxiv.org/pdf/2409.10669',
-            },
-          ]}
-          dark
-          reverse
-          graphic={
-            <div className="overflow-hidden rounded-2xl shadow-lg ring-1 ring-white/10">
-              <img alt="" src="/visual-highlights/1.jpeg" className="w-full object-cover" />
+        <div id="applications" className="scroll-mt-24">
+          <Container className="py-28">
+            <Subheading dark>Thrust 6</Subheading>
+            <Heading as="h3" className="mt-2 !text-3xl sm:!text-5xl" dark>
+              Autonomy in the Field
+            </Heading>
+            <div className="mt-8 overflow-hidden rounded-2xl shadow-lg ring-1 ring-white/10" style={{ aspectRatio: '21/9' }}>
+              <img
+                alt=""
+                src="/visual-highlights/thrust6.jpg"
+                className="w-full h-full object-cover"
+              />
             </div>
-          }
-        />
+            <div className="mt-8 grid grid-cols-1 gap-x-12 gap-y-8 lg:grid-cols-[5fr_8fr]">
+              <div>
+                <p className="text-xs font-semibold tracking-[0.16em] uppercase text-gray-300">
+                  Representative Papers
+                </p>
+                <ul className="mt-3 space-y-2">
+                  {[
+                    {
+                      title: 'Locomotion as manipulation with ReachBot',
+                      venue: 'Science Robotics',
+                      year: '2024',
+                      url: 'https://www.science.org/doi/abs/10.1126/scirobotics.adi9762',
+                    },
+                    {
+                      title: 'Testing Gecko-Inspired Adhesives with Astrobee Aboard the ISS',
+                      venue: 'IEEE Robotics and Automation Magazine',
+                      year: '2022',
+                      url: 'https://ieeexplore.ieee.org/document/9783137',
+                    },
+                    {
+                      title: 'Discovering Dominant Dynamics for Nonlinear Continuum Robot Control',
+                      venue: 'Nature Portfolio (npj Robotics)',
+                      year: '2025',
+                      url: 'https://www.nature.com/articles/s44182-025-00021-8',
+                    },
+                  ].map((paper) => (
+                    <li key={paper.title} className="flex gap-2 text-sm/5">
+                      <span className="mt-0.5 shrink-0 text-gray-500">•</span>
+                      <span>
+                        <a
+                          href={paper.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="font-medium underline underline-offset-2 transition text-white decoration-gray-600 hover:decoration-white"
+                        >
+                          {paper.title}
+                        </a>
+                        <span className="text-gray-400">
+                          {' · '}
+                          <span className="whitespace-nowrap">{paper.venue}, {paper.year}</span>
+                        </span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="text-base/7 text-gray-400">
+                <p>
+                  Autonomous systems are increasingly central to modern society, becoming deeply embedded in critical infrastructure, human-facing services, and scientific discovery. From robotic exploration of extreme environments such as space, to autonomous vehicles navigating complex urban landscapes, to assistive robots operating alongside humans, autonomy is rapidly moving from research prototypes to indispensable real-world operations. These domains require systems that can reason under uncertainty, adapt to novel conditions, and operate robustly for extended periods with limited supervision. Bridging the gap between advances in robot autonomy and deployment in these real-world settings is therefore both a scientific challenge and an opportunity for broad societal impact.
+                </p>
+                <p className="mt-4">
+                  We pursue application-driven autonomy in domains where intelligent robots can meaningfully advance science and benefit society. Our work spans space robotics, legged systems, humanoids, autonomous vehicles, soft robots, and robotic manipulation, with a focus on high-impact applications that demand robust autonomy in complex, potentially unstructured environments. Our research has been deployed in some of the world’s most challenging operational settings, including aboard the International Space Station, where autonomous robotic technologies developed by our group have been tested in microgravity. These deployments serve not only as application targets but also as rigorous testbeds that expose the fundamental limitations of current autonomy stacks.
+                </p>
+                <p className="mt-4">
+                  By working in the field, we gain insights that drive our core research thrusts and ensure that our scientific contributions are grounded in the realities of real-world robotic systems.
+                  Through this tight integration of fundamental research and real-world deployment, we aim to develop autonomous systems that expand the reach of human capability, accelerate scientific discovery, and create tangible societal value.
+                </p>
+              </div>
+            </div>
+          </Container>
+        </div>
       </div>
 
       <Footer />
