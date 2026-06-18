@@ -168,7 +168,7 @@ export default function Hardware() {
                 safe policy deployment.
               </p>
               <p>
-                At ASL, we use the G1 as a platform to develop and evaluate
+                We use the G1 as a platform to develop and evaluate
                 constraint-aware control frameworks that combine reinforcement
                 learning with real-time safety filters. Our work enables
                 policies trained entirely in simulation to satisfy complex

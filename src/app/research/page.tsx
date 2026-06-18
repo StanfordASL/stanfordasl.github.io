@@ -199,9 +199,9 @@ export default function Research() {
           <div className="mt-8 overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/10" style={{ aspectRatio: '21/9' }}>
             <img
               alt=""
-              src="/visual-highlights/2.jpg"
+              src="/visual-highlights/5.JPG"
               className="w-full h-full object-cover"
-              style={{ objectPosition: '50% 20%' }}
+              style={{ objectPosition: '50% 50%' }}
             />
           </div>
           <div className="mt-8 grid grid-cols-1 gap-x-12 gap-y-8 lg:grid-cols-[5fr_8fr]">
@@ -270,15 +270,15 @@ export default function Research() {
                 anticipate, and recover from potential failures while satisfying
                 formal safety constraints. Our work spans runtime monitoring
                 systems that identify out-of-distribution situations before they
-                lead to harmful outcomes; guardrailing mechanisms grounded in
-                control theory — including control barrier functions and predictive
-                safety filters — that provably constrain policy outputs to a
-                verified safe set; and reasoning-based frameworks that draw on the
+                cause harm; mechanistic interpretability methods that probe the internal representations of
+                robot foundation models to expose how behaviors and failure modes are
+                encoded and can be steered as desired; safety filters that provably
+                constrain policy outputs to safe sets; and reasoning-based frameworks that draw on the
                 broad world knowledge of foundation models to recognize novel
                 hazards and synthesize contingency plans on the fly. By
                 understanding not just what robots do but when and why they fail,
                 we aim to build physical AI systems that operators and society can
-                genuinely depend on in high-stakes, real-world deployments.
+                depend on in high-stakes, real-world deployments.
               </p>
             </div>
           </div>
