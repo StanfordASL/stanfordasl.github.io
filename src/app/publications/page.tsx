@@ -15,7 +15,7 @@ export default function PublicationsPage() {
   const sections = getPublicationSections()
 
   return (
-    <main>
+    <main className="overflow-hidden">
       <GradientBackground />
       <Container>
         <Navbar />

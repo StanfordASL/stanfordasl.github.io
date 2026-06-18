@@ -45,7 +45,7 @@ function Hero() {
       <Container className="relative mt-16 pb-16">
         <div className="grid grid-cols-1 items-center gap-8 w-full xl:grid-cols-2">
           <div className="relative z-10 text-center xl:text-left">
-            <h1 className="font-display font-medium tracking-tight text-balance text-gray-950 text-[110px] leading-[0.8]">
+            <h1 className="font-display font-medium tracking-tight text-balance text-gray-950 text-[clamp(2.75rem,11vw,110px)] leading-[0.95] sm:leading-[0.85] xl:leading-[0.8]">
               Autonomous Systems Lab
             </h1>
             <p className="mt-8 xl:mx-0 max-w-lg text-xl/7 font-medium text-gray-600 sm:text-2xl/8">
