@@ -114,41 +114,73 @@ export default function Research() {
       </Container>
       <Header />
 
-      {/* Thrust 1: Foundations — graphic left, text right */}
-      <ThrustSection
-        id="foundations"
-        eyebrow="Thrust 1"
-        title="Foundation Models"
-        description="We develop foundation models tailored for embodied intelligence, forming the core architecture for scalable, adaptive, and robust autonomous systems. Our work spans representation learning, generative modeling, and multi-modal reasoning — all aimed at building the next autonomy stack from the ground up."
-        papers={[
-          {
-            title:
-              'Self-Supervised Bootstrapping of Action-Predictive Embodied Reasoning',
-            venue: 'ArXiv',
-            year: '2026',
-            url: 'https://arxiv.org/abs/2602.08167',
-          },
-          {
-            title:
-              'RoboMonkey: Scaling Test-Time Sampling and Verification for Vision-Language-Action Models',
-            venue: 'CoRL',
-            year: '2025',
-            url: 'https://arxiv.org/abs/2506.17811',
-          },
-          {
-            title:
-              'Space-LLaVA: a Vision-Language Model Adapted to Extraterrestrial Applications',
-            venue: 'IEEE Aerospace Conference',
-            year: '2025',
-            url: 'https://arxiv.org/abs/2408.05924',
-          },
-        ]}
-        graphic={
-          <div className="overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/10">
-            <img alt="" src="/visual-highlights/3.jpg" className="w-full object-cover" />
+      {/* Thrust 1: Generalist Robot Learning and Reasoning — full-width figure, text + papers below */}
+      <div id="foundations" className="scroll-mt-24">
+        <Container className="py-28">
+          <Subheading>Thrust 1</Subheading>
+          <Heading as="h3" className="mt-2 !text-3xl sm:!text-5xl">
+            Generalist Robot Learning and Reasoning
+          </Heading>
+          <div className="mt-8 grid grid-cols-1 items-center gap-x-12 gap-y-8 lg:grid-cols-2">
+            <div className="order-2 lg:order-1">
+              <div className="overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/10">
+                <img
+                  alt="R&B-EnCoRe: an information-benefit filter distills reasoning primitives into a refined mixture used to train VLAs for manipulation, legged locomotion, and autonomous driving, yielding action-predictive embodied reasoning."
+                  src="/visual-highlights/thrust1-encore.jpg"
+                  className="w-full"
+                />
+              </div>
+              <p className="mt-8 text-xs font-semibold tracking-[0.16em] uppercase text-gray-700">
+                Representative Papers
+              </p>
+              <ul className="mt-3 space-y-2">
+                {[
+                  {
+                    title: 'RoboMonkey: Scaling Test-Time Sampling and Verification for Vision-Language-Action Models',
+                    venue: 'CoRL',
+                    year: '2025',
+                    url: 'https://arxiv.org/abs/2506.17811',
+                  },
+                  {
+                    title: 'Self-Supervised Bootstrapping of Action-Predictive Embodied Reasoning',
+                    venue: 'RSS',
+                    year: '2026',
+                    url: 'https://arxiv.org/abs/2602.08167',
+                  },
+                  {
+                    title: 'Scan, Materialize, Simulate: A Generalizable Framework for Physically Grounded Robot Planning',
+                    venue: 'arXiv',
+                    year: '2025',
+                    url: 'https://arxiv.org/abs/2505.14938',
+                  },
+                ].map((paper) => (
+                  <li key={paper.title} className="flex gap-2 text-sm/5">
+                    <span className="mt-0.5 shrink-0 text-gray-400">•</span>
+                    <span>
+                      <a
+                        href={paper.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="font-medium underline underline-offset-2 transition text-gray-900 decoration-gray-300 hover:decoration-gray-900"
+                      >
+                        {paper.title}
+                      </a>
+                      <span className="text-gray-600">
+                        {' · '}
+                        <span className="whitespace-nowrap">{paper.venue}, {paper.year}</span>
+                      </span>
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="order-1 lg:order-2 text-base/7 text-gray-600">
+              <p>A central goal of modern robotics is to move beyond systems engineered for a single task toward generalist robots that operate across many tasks, objects, and embodiments. Recent progress has been driven by robot foundation models trained on large and diverse data: vision-language-action (VLA) models that map perception and instructions directly to control, and world models that learn how the physical world responds to a robot&rsquo;s actions. These models offer broad competence, but they remain limited in reliability, physical grounding, and the deliberate reasoning that real-world deployment demands.</p>
+              <p className="mt-4">We develop the learning and reasoning foundations that make such systems dependable. Our work spans test-time methods that improve the robustness and generalization of VLAs through sampling and verification rather than additional training; self-supervised approaches that let robots bootstrap action-predictive reasoning from their own interaction data; and physically grounded planning that couples 3D scene reconstruction, vision-language perception, and physics simulation so that robots can reason about the consequences of their actions before they act. Together, these efforts aim toward a new generation of robot foundation models that pair the breadth of large-scale learning with the reliability, physical grounding, and reasoning that real-world autonomy demands.</p>
+            </div>
           </div>
-        }
-      />
+        </Container>
+      </div>
 
       {/* Thrust 2: Backbone — dark band */}
       <div className="bg-gray-900 bg-[url(/dot-texture.svg)] py-8">
