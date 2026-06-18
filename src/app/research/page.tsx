@@ -205,7 +205,7 @@ export default function Research() {
             />
           </div>
           <div className="mt-8 grid grid-cols-1 gap-x-12 gap-y-8 lg:grid-cols-[5fr_8fr]">
-            <div>
+            <div className="order-2 lg:order-1">
               <p className="text-xs font-semibold tracking-[0.16em] uppercase text-gray-700">
                 Representative Papers
               </p>
@@ -250,7 +250,7 @@ export default function Research() {
                 ))}
               </ul>
             </div>
-            <div className="text-base/7 text-gray-600">
+            <div className="order-1 lg:order-2 text-base/7 text-gray-600">
               <p>
                 Deploying AI systems in the physical world introduces a new
                 category of risk: unlike digital systems, embodied agents must act
@@ -380,7 +380,7 @@ export default function Research() {
               />
             </div>
             <div className="mt-8 grid grid-cols-1 gap-x-12 gap-y-8 lg:grid-cols-[5fr_8fr]">
-              <div>
+              <div className="order-2 lg:order-1">
                 <p className="text-xs font-semibold tracking-[0.16em] uppercase text-gray-300">
                   Representative Papers
                 </p>
@@ -425,7 +425,7 @@ export default function Research() {
                   ))}
                 </ul>
               </div>
-              <div className="text-base/7 text-gray-400">
+              <div className="order-1 lg:order-2 text-base/7 text-gray-400">
                 <p>
                   Autonomous systems are increasingly central to modern society, becoming deeply embedded in critical infrastructure, human-facing services, and scientific discovery. From robotic exploration of extreme environments such as space, to autonomous vehicles navigating complex urban landscapes, to assistive robots operating alongside humans, autonomy is rapidly moving from research prototypes to indispensable real-world operations. These domains require systems that can reason under uncertainty, adapt to novel conditions, and operate robustly for extended periods with limited supervision. Bridging the gap between advances in robot autonomy and deployment in these real-world settings is therefore both a scientific challenge and an opportunity for broad societal impact.
                 </p>
