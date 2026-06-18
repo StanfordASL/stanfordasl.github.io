@@ -194,9 +194,9 @@ function BentoSection() {
           <BentoCard
             eyebrow="Applied Autonomy"
             title="Deploy in high-impact domains"
-            description="We translate methods into real systems across unconventional space robotics, manipulation, quadruped navigation, autonomous vehicles, and mission-driven aerospace applications."
+            description="We deploy autonomy in the field — spanning space robotics, legged and humanoid systems, autonomous vehicles, and manipulation — where operating in the world's most challenging environments grounds and drives our core research."
             graphic={
-              <div className="absolute inset-0 bg-[url(/visual-highlights/1.jpeg)] bg-cover bg-center" />
+              <div className="absolute inset-0 bg-[url(/visual-highlights/thrust6.jpg)] bg-cover bg-center" />
             }
             className="h-full"
           />
