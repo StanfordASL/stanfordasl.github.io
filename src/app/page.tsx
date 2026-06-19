@@ -183,7 +183,7 @@ function BentoSection() {
           <BentoCard
             eyebrow="Optimal & Learning-based Control"
             title="Operate at the limits"
-            description="We integrate optimization-based methods with AI-driven policies to achieve high-performance control at the physical edge."
+            description="We look at the complementary nature of optimization-based and learning-based control and planning methods. At their interface, we can bring the speed, interpretability, and constraint satisfaction of optimization to the broad capabilities and generalization of machine learning."
             graphic={
               <div className="absolute inset-0 bg-[url(/visual-highlights/2.jpg)] bg-cover bg-center" />
             }

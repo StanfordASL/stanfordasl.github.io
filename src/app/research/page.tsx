@@ -365,7 +365,11 @@ export default function Research() {
         id="control"
         eyebrow="Thrust 5"
         title="Optimal &amp; Learning-based Control"
-        description="We integrate optimization-based methods with AI-driven policies to achieve high-performance control at the physical edge. Our work pushes autonomous systems to operate at the limits of what is dynamically feasible."
+        description={<>
+          <p>Within the robotics stack, there are numerous problems to solve in planning and control, at various levels of abstraction, and with different frequency requirements. And in each layer, these problems generally can be divided into two classes: those that are easy to model (with a prescribed level of accuracy and computational expense), and those that are hard.</p>
+          <p className="mt-4">For the modelable class, optimization-based techniques can lead to fast, globally-accurate solutions with hard constraint satisfaction (especially important for safety-critical systems). Whereas, for the hard-to-model class, we typically have to either make approximations, or turn to learning. When a policy is in-distribution, learning can bring high levels of capability to some of the hardest challenges in fields such as manipulation.</p>
+          <p className="mt-4">In our research in ASL, we look at how these methods are complementary, rather than distinct, with a particular emphasis on safety and reliability for AI-driven systems. Considering these fields together allows us to push forward the frontier of performance and safety, allowing robots to be more capable while being confident about constraints.</p>
+        </>}
         papers={[
           {
             title:
@@ -381,12 +385,20 @@ export default function Research() {
             year: '2024',
             url: '/wp-content/papercite-data/pdf/Celestini.Gammelli.ea.RAL24.pdf',
           },
+          // {
+          //   title:
+          //     'Practical Deployment of Spectral Submanifold Reduction for Optimal Control of High-Dimensional Systems',
+          //   venue: 'IFAC World Congress',
+          //   year: '2023',
+          //   url: '/wp-content/papercite-data/pdf/Alora.Cenedese.IFAC23.pdf',
+          // },
           {
             title:
-              'Practical Deployment of Spectral Submanifold Reduction for Optimal Control of High-Dimensional Systems',
-            venue: 'IFAC World Congress',
-            year: '2023',
-            url: '/wp-content/papercite-data/pdf/Alora.Cenedese.IFAC23.pdf',
+              'Safe, Task-Consistent Manipulation with Operational Space Control Barrier Functions',
+            venue:
+              'IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)',
+            year: '2025',
+            url: 'https://ieeexplore.ieee.org/document/11246389',
           },
         ]}
         graphic={
