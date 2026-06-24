@@ -84,7 +84,7 @@ export function getPeopleByPositions(positions: string[]): Person[] {
 }
 
 export function getResearchTeam(): Person[] {
-  return getPeopleByPositions(['phd', 'postdoc'])
+  return getPeopleByPositions(['phd', 'postdoc', 'undergrad'])
 }
 
 export function getExternalAffiliates(): Person[] {
