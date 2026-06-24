@@ -119,7 +119,7 @@ export default function Research() {
         <Container className="py-28">
           <Subheading>Thrust 1</Subheading>
           <Heading as="h3" className="mt-2 !text-3xl sm:!text-5xl">
-            Generalist Robot Learning and Reasoning
+            Robot Foundation Model
           </Heading>
           <div className="mt-8 grid grid-cols-1 items-center gap-x-12 gap-y-8 lg:grid-cols-2">
             <div className="order-2 lg:order-1">
@@ -136,6 +136,12 @@ export default function Research() {
               <ul className="mt-3 space-y-2">
                 {[
                   {
+                    title: 'Scan, Materialize, Simulate: A Generalizable Framework for Physically Grounded Robot Planning',
+                    venue: 'arXiv',
+                    year: '2025',
+                    url: 'https://arxiv.org/abs/2505.14938',
+                  },
+                  {
                     title: 'RoboMonkey: Scaling Test-Time Sampling and Verification for Vision-Language-Action Models',
                     venue: 'CoRL',
                     year: '2025',
@@ -146,12 +152,6 @@ export default function Research() {
                     venue: 'RSS',
                     year: '2026',
                     url: 'https://arxiv.org/abs/2602.08167',
-                  },
-                  {
-                    title: 'Scan, Materialize, Simulate: A Generalizable Framework for Physically Grounded Robot Planning',
-                    venue: 'arXiv',
-                    year: '2025',
-                    url: 'https://arxiv.org/abs/2505.14938',
                   },
                 ].map((paper) => (
                   <li key={paper.title} className="flex gap-2 text-sm/5">
@@ -244,10 +244,10 @@ export default function Research() {
               <ul className="mt-3 space-y-2">
                 {[
                   {
-                    title: 'Observing and Controlling Features in Vision-Language-Action Models',
-                    venue: 'arXiv',
-                    year: '2026',
-                    url: 'https://arxiv.org/abs/2603.05487',
+                    title: 'Real-Time Anomaly Detection and Reactive Planning with Large Language Models',
+                    venue: 'RSS',
+                    year: '2024',
+                    url: 'https://arxiv.org/abs/2407.08735',
                   },
                   {
                     title: 'Real-Time Out-of-Distribution Failure Prevention via Multi-Modal Reasoning',
@@ -256,10 +256,10 @@ export default function Research() {
                     url: 'https://arxiv.org/abs/2505.10547',
                   },
                   {
-                    title: 'Real-Time Anomaly Detection and Reactive Planning with Large Language Models',
-                    venue: 'RSS',
-                    year: '2024',
-                    url: 'https://arxiv.org/abs/2407.08735',
+                    title: 'Observing and Controlling Features in Vision-Language-Action Models',
+                    venue: 'arXiv',
+                    year: '2026',
+                    url: 'https://arxiv.org/abs/2603.05487',
                   },
                 ].map((paper) => (
                   <li key={paper.title} className="flex gap-2 text-sm/5">
@@ -330,10 +330,10 @@ export default function Research() {
           papers={[
             {
               title:
-                'CUPID: Curating Data your Robot Loves with Influence Functions',
-              venue: 'CoRL',
-              year: '2025',
-              url: 'https://arxiv.org/abs/2506.19121',
+                'Data Lifecycle Management in Evolving Input Distributions for Learning-based Aerospace Applications',
+              venue: 'IEEE Aerospace Conference',
+              year: '2023',
+              url: 'https://arxiv.org/abs/2209.06855',
             },
             {
               title:
@@ -344,10 +344,10 @@ export default function Research() {
             },
             {
               title:
-                'Data Lifecycle Management in Evolving Input Distributions for Learning-based Aerospace Applications',
-              venue: 'IEEE Aerospace Conference',
-              year: '2023',
-              url: 'https://arxiv.org/abs/2209.06855',
+                'CUPID: Curating Data your Robot Loves with Influence Functions',
+              venue: 'CoRL',
+              year: '2025',
+              url: 'https://arxiv.org/abs/2506.19121',
             },
           ]}
           dark
@@ -371,20 +371,6 @@ export default function Research() {
           <p className="mt-4">In our research in ASL, we look at how these methods are complementary, rather than distinct, with a particular emphasis on safety and reliability for AI-driven systems. Considering these fields together allows us to push forward the frontier of performance and safety, allowing robots to be more capable while being confident about constraints.</p>
         </>}
         papers={[
-          {
-            title:
-              'Discovering Dominant Dynamics for Nonlinear Continuum Robot Control',
-            venue: 'npj Robotics',
-            year: '2025',
-            url: 'https://www.nature.com/articles/s44182-025-00021-8',
-          },
-          {
-            title:
-              'Transformer-based Model Predictive Control: Trajectory Optimization via Sequence Modeling',
-            venue: 'IEEE RA-L',
-            year: '2024',
-            url: '/wp-content/papercite-data/pdf/Celestini.Gammelli.ea.RAL24.pdf',
-          },
           // {
           //   title:
           //     'Practical Deployment of Spectral Submanifold Reduction for Optimal Control of High-Dimensional Systems',
@@ -392,6 +378,20 @@ export default function Research() {
           //   year: '2023',
           //   url: '/wp-content/papercite-data/pdf/Alora.Cenedese.IFAC23.pdf',
           // },
+          {
+            title:
+              'Transformer-based Model Predictive Control: Trajectory Optimization via Sequence Modeling',
+            venue: 'IEEE RA-L',
+            year: '2024',
+            url: '/wp-content/papercite-data/pdf/Celestini.Gammelli.ea.RAL24.pdf',
+          },
+          {
+            title:
+              'Discovering Dominant Dynamics for Nonlinear Continuum Robot Control',
+            venue: 'npj Robotics',
+            year: '2025',
+            url: 'https://www.nature.com/articles/s44182-025-00021-8',
+          },
           {
             title:
               'Safe, Task-Consistent Manipulation with Operational Space Control Barrier Functions',
@@ -431,16 +431,16 @@ export default function Research() {
                 <ul className="mt-3 space-y-2">
                   {[
                     {
-                      title: 'Locomotion as manipulation with ReachBot',
-                      venue: 'Science Robotics',
-                      year: '2024',
-                      url: 'https://www.science.org/doi/abs/10.1126/scirobotics.adi9762',
-                    },
-                    {
                       title: 'Testing Gecko-Inspired Adhesives with Astrobee Aboard the ISS',
                       venue: 'IEEE Robotics and Automation Magazine',
                       year: '2022',
                       url: 'https://ieeexplore.ieee.org/document/9783137',
+                    },
+                    {
+                      title: 'Locomotion as manipulation with ReachBot',
+                      venue: 'Science Robotics',
+                      year: '2024',
+                      url: 'https://www.science.org/doi/abs/10.1126/scirobotics.adi9762',
                     },
                     {
                       title: 'Discovering Dominant Dynamics for Nonlinear Continuum Robot Control',
