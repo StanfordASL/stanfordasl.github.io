@@ -221,8 +221,8 @@ export default function Hardware() {
           papers={[
             {
               title:
-                'Transformers for Trajectory Optimization with Application to Spacecraft Rendezvous',
-              url: 'https://rendezvoustransformer.github.io/',
+                'Design and Development of a Gecko-Adhesive Gripper for the Astrobee Free-Flying Robot',
+              url: 'https://arxiv.org/abs/2009.09151',
             },
             {
               title:
