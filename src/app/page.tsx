@@ -143,7 +143,7 @@ function BentoSection() {
             title="Build the next autonomy stack"
             description="We develop foundation models tailored for embodied intelligence, forming the core architecture for scalable, adaptive, and robust autonomous systems."
             graphic={
-              <div className="h-80 bg-[url(/visual-highlights/3.jpg)] bg-cover bg-center" />
+              <div className="h-80 bg-[url(/visual-highlights/thrust1-encore.jpg)] bg-cover bg-center" />
             }
             className="h-full"
           />
@@ -165,7 +165,7 @@ function BentoSection() {
             title="Safe and reliable autonomy"
             description="Our research integrates monitoring, guardrailing, and alignment techniques that keep embodied systems safe, predictable, and reliable in the real world."
             graphic={
-              <div className="absolute inset-0 bg-[url(/visual-highlights/5.JPG)] bg-cover bg-center" />
+              <div className="absolute inset-0 bg-[url(/visual-highlights/thrust3-safety.jpg)] bg-cover bg-center" />
             }
             className="h-full"
           />
