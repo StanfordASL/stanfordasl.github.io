@@ -2,7 +2,7 @@ import { Container } from '@/components/container'
 import { Footer } from '@/components/footer'
 import { GradientBackground } from '@/components/gradient'
 import { Navbar } from '@/components/navbar'
-import { Heading } from '@/components/text'
+import { Heading, Subheading } from '@/components/text'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 
@@ -12,10 +12,22 @@ export const metadata: Metadata = {
     'The robotic platforms used in research at the Autonomous Systems Lab at Stanford University.',
 }
 
-function PlaceholderImage() {
+function PlaceholderImage({ dark = false }: { dark?: boolean }) {
   return (
-    <div className="flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-2xl bg-gray-100 shadow-lg ring-1 ring-black/10">
-      <span className="text-sm font-medium text-gray-400">Placeholder</span>
+    <div
+      className={`flex aspect-[3/4] w-full items-center justify-center overflow-hidden rounded-2xl shadow-lg ${
+        dark
+          ? 'bg-gray-950/40 ring-1 ring-white/10'
+          : 'bg-gray-100 ring-1 ring-black/10'
+      }`}
+    >
+      <span
+        className={`font-mono text-xs font-semibold tracking-widest uppercase ${
+          dark ? 'text-gray-500' : 'text-gray-400'
+        }`}
+      >
+        Image coming soon
+      </span>
     </div>
   )
 }
@@ -23,59 +35,85 @@ function PlaceholderImage() {
 type Paper = { title: string; venue?: string; year?: string; url: string }
 
 function RobotSection({
+  index,
+  eyebrow,
   name,
   description,
   papers = [],
   imageSrc,
+  reverse = false,
+  dark = false,
 }: {
+  index: number
+  eyebrow: string
   name: string
   description: React.ReactNode
   papers?: Paper[]
   imageSrc?: string
+  reverse?: boolean
+  dark?: boolean
 }) {
   return (
-    <div className="border-t border-gray-100 py-20 first:border-t-0">
-      <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
-        {imageSrc ? (
-          <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl bg-gray-100 shadow-lg ring-1 ring-black/10">
-            <Image
-              src={imageSrc}
-              alt={name}
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
+    <Container className="py-24 sm:py-28">
+      <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+        <div className={reverse ? 'lg:order-2' : ''}>
+          {imageSrc ? (
+            <div
+              className={`relative aspect-[3/4] w-full overflow-hidden rounded-2xl shadow-lg ${
+                dark ? 'ring-1 ring-white/10' : 'ring-1 ring-black/10'
+              }`}
+            >
+              <Image
+                src={imageSrc}
+                alt={name}
+                fill
+                className="object-cover transition duration-500 hover:scale-[1.03]"
+                sizes="(max-width: 1024px) 100vw, 50vw"
+              />
+            </div>
+          ) : (
+            <PlaceholderImage dark={dark} />
+          )}
+        </div>
+        <div className={reverse ? 'lg:order-1' : ''}>
+          <div className="flex items-center gap-3">
+            <span
+              className={`font-mono text-xs font-semibold ${dark ? 'text-gray-600' : 'text-gray-300'}`}
+            >
+              {String(index).padStart(2, '0')}
+            </span>
+            <Subheading dark={dark}>{eyebrow}</Subheading>
           </div>
-        ) : (
-          <PlaceholderImage />
-        )}
-        <div>
-          <Heading as="h2" className="!text-3xl sm:!text-4xl">
+          <Heading as="h2" className="mt-3 !text-3xl sm:!text-4xl" dark={dark}>
             {name}
           </Heading>
-          <div className="mt-6 space-y-4 text-base/7 text-gray-600">
+          <div
+            className={`mt-6 max-w-xl space-y-4 text-base/7 ${dark ? 'text-gray-400' : 'text-gray-600'}`}
+          >
             {description}
           </div>
           {papers.length > 0 && (
-            <div className="mt-8">
-              <p className="text-xs font-semibold tracking-[0.16em] uppercase text-gray-700">
+            <div className="mt-8 max-w-xl">
+              <p
+                className={`text-xs font-semibold tracking-[0.16em] uppercase ${dark ? 'text-gray-300' : 'text-gray-700'}`}
+              >
                 Representative Papers
               </p>
               <ul className="mt-3 space-y-2">
                 {papers.map((paper) => (
                   <li key={paper.title} className="flex gap-2 text-sm/5">
-                    <span className="mt-0.5 shrink-0 text-gray-400">•</span>
+                    <span className={`mt-0.5 shrink-0 ${dark ? 'text-gray-500' : 'text-gray-400'}`}>•</span>
                     <span>
                       <a
                         href={paper.url}
                         target="_blank"
                         rel="noreferrer"
-                        className="font-medium underline underline-offset-2 transition text-gray-900 decoration-gray-300 hover:decoration-gray-900"
+                        className={`font-medium underline underline-offset-2 transition ${dark ? 'text-white decoration-gray-600 hover:decoration-white' : 'text-gray-900 decoration-gray-300 hover:decoration-gray-900'}`}
                       >
                         {paper.title}
                       </a>
                       {paper.venue && (
-                        <span className="text-gray-600">
+                        <span className={dark ? 'text-gray-400' : 'text-gray-600'}>
                           {' · '}
                           <span className="whitespace-nowrap">
                             {paper.venue}{paper.year ? `, ${paper.year}` : ''}
@@ -90,7 +128,7 @@ function RobotSection({
           )}
         </div>
       </div>
-    </div>
+    </Container>
   )
 }
 
@@ -103,17 +141,24 @@ export default function Hardware() {
       </Container>
 
       <Container className="mt-16">
-        <Heading as="h1">Hardware</Heading>
-        <p className="mt-6 max-w-3xl text-2xl font-medium text-gray-500">
-          Our lab operates a range of robotic platforms that span legged
-          locomotion, humanoid whole-body control, and spacecraft proximity
-          operations — providing the physical testbeds that ground our
-          algorithms in the real world.
-        </p>
+        <div className="relative overflow-hidden rounded-4xl bg-gray-950 bg-[url(/dot-texture.svg)] px-8 py-24 sm:px-16">
+          <Subheading dark>Robotic Platforms</Subheading>
+          <Heading as="h1" className="mt-3" dark>
+            Hardware
+          </Heading>
+          <p className="mt-6 max-w-3xl text-2xl font-medium text-gray-300">
+            Our lab operates a range of robotic platforms that span legged
+            locomotion, humanoid whole-body control, and spacecraft proximity
+            operations — providing the physical testbeds that ground our
+            algorithms in the real world.
+          </p>
+        </div>
       </Container>
 
-      <Container className="mt-16 pb-24">
+      <div className="pb-24">
         <RobotSection
+          index={1}
+          eyebrow="Legged Locomotion"
           name="Unitree Go2 Quadruped"
           imageSrc="/hardware/quad.png"
           description={
@@ -154,12 +199,17 @@ export default function Hardware() {
           ]}
         />
 
+        <div className="bg-gray-900 bg-[url(/dot-texture.svg)]">
         <RobotSection
+          index={2}
+          eyebrow="Humanoid Whole-Body Control"
           name="Unitree G1 Humanoid"
+          reverse
+          dark
           description={
             <>
               <p>
-                The United G1 is a full-size humanoid robot with 29 degrees of
+                The Unitree G1 is a full-size humanoid robot with 29 degrees of
                 freedom, capable of standing, walking, and performing dextrous
                 whole-body tasks. Its human-like form factor is well-suited for
                 operation in environments designed for people, and its high
@@ -189,8 +239,11 @@ export default function Hardware() {
             },
           ]}
         />
+        </div>
 
         <RobotSection
+          index={3}
+          eyebrow="Space Robotics"
           name="FreeFlyer"
           imageSrc="/hardware/ff.png"
           description={
@@ -221,8 +274,8 @@ export default function Hardware() {
           papers={[
             {
               title:
-                'Transformers for Trajectory Optimization with Application to Spacecraft Rendezvous',
-              url: 'https://rendezvoustransformer.github.io/',
+                'Design and Development of a Gecko-Adhesive Gripper for the Astrobee Free-Flying Robot',
+              url: 'https://arxiv.org/abs/2009.09151',
             },
             {
               title:
@@ -238,7 +291,7 @@ export default function Hardware() {
             },
           ]}
         />
-      </Container>
+      </div>
 
       <Footer />
     </main>

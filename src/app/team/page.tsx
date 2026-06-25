@@ -131,7 +131,11 @@ function ResearchTeam() {
                     {person.title}
                   </h3>
                   <p className="text-sm text-gray-600">
-                    {person.position === 'phd' ? 'PhD Student' : 'Postdoctoral Scholar'}
+                    {person.position === 'phd'
+                      ? 'PhD Student'
+                      : person.position === 'undergrad'
+                        ? 'Undergraduate Researcher'
+                        : 'Postdoctoral Scholar'}
                   </p>
                 </div>
                 {(person.website || person.gscholar) && (
