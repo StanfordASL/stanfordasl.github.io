@@ -119,7 +119,7 @@ export default function Research() {
         <Container className="py-28">
           <Subheading>Thrust 1</Subheading>
           <Heading as="h3" className="mt-2 !text-3xl sm:!text-5xl">
-            Robot Foundation Model
+            Robot Foundation Models
           </Heading>
           <div className="mt-8 grid grid-cols-1 items-center gap-x-12 gap-y-8 lg:grid-cols-2">
             <div className="order-2 lg:order-1">
@@ -228,12 +228,11 @@ export default function Research() {
           <Heading as="h3" className="mt-2 !text-3xl sm:!text-5xl">
             Physical AI Safety
           </Heading>
-          <div className="mt-8 overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/10" style={{ aspectRatio: '21/9' }}>
+          <div className="mt-8 overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/10" style={{ aspectRatio: '2000/650' }}>
             <img
-              alt=""
-              src="/visual-highlights/5.JPG"
+              alt="Failure detection across diverse real-world scenarios — aerial robots identifying construction zones, high-temperature hazards, and safe landing sites, and a quadruped detecting unauthorized access and chemical spills."
+              src="/visual-highlights/thrust3-safety.jpg"
               className="w-full h-full object-cover"
-              style={{ objectPosition: '50% 50%' }}
             />
           </div>
           <div className="mt-8 grid grid-cols-1 gap-x-12 gap-y-8 lg:grid-cols-[5fr_8fr]">

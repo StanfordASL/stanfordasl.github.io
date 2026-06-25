@@ -139,7 +139,7 @@ function BentoSection() {
       <div className="mt-10 grid grid-cols-1 gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
         <Link href="/research#foundations">
           <BentoCard
-            eyebrow="Foundation Models"
+            eyebrow="Robot Foundation Models"
             title="Build the next autonomy stack"
             description="We develop foundation models tailored for embodied intelligence, forming the core architecture for scalable, adaptive, and robust autonomous systems."
             graphic={
