@@ -228,7 +228,7 @@ export default function Research() {
           <Heading as="h3" className="mt-2 !text-3xl sm:!text-5xl">
             Physical AI Safety
           </Heading>
-          <div className="mt-8 overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/10" style={{ aspectRatio: '2000/650' }}>
+          <div className="mt-8 overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/10" style={{ aspectRatio: '1216/671' }}>
             <img
               alt="Failure detection across diverse real-world scenarios — aerial robots identifying construction zones, high-temperature hazards, and safe landing sites, and a quadruped detecting unauthorized access and chemical spills."
               src="/visual-highlights/thrust3-safety.jpg"
