@@ -41,6 +41,7 @@ function RobotSection({
   description,
   papers = [],
   imageSrc,
+  imagePosition,
   reverse = false,
   dark = false,
 }: {
@@ -50,6 +51,7 @@ function RobotSection({
   description: React.ReactNode
   papers?: Paper[]
   imageSrc?: string
+  imagePosition?: string
   reverse?: boolean
   dark?: boolean
 }) {
@@ -68,6 +70,7 @@ function RobotSection({
                 alt={name}
                 fill
                 className="object-cover transition duration-500 hover:scale-[1.03]"
+                style={imagePosition ? { objectPosition: imagePosition } : undefined}
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
             </div>
@@ -199,13 +202,13 @@ export default function Hardware() {
           ]}
         />
 
-        <div className="bg-gray-900 bg-[url(/dot-texture.svg)]">
         <RobotSection
           index={2}
           eyebrow="Humanoid Whole-Body Control"
           name="Unitree G1 Humanoid"
           reverse
-          dark
+          imageSrc="/hardware/humanoid.png"
+          imagePosition="60% center"
           description={
             <>
               <p>
@@ -239,7 +242,6 @@ export default function Hardware() {
             },
           ]}
         />
-        </div>
 
         <RobotSection
           index={3}
