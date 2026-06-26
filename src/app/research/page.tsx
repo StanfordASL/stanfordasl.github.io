@@ -143,8 +143,8 @@ export default function Research() {
                   },
                   {
                     title: 'Scan, Materialize, Simulate: A Generalizable Framework for Physically Grounded Robot Planning',
-                    venue: 'arXiv',
-                    year: '2025',
+                    venue: 'ICRA',
+                    year: '2026',
                     url: 'https://arxiv.org/abs/2505.14938',
                   },
                   {

@@ -140,8 +140,8 @@ function BentoSection() {
         <Link href="/research#foundations">
           <BentoCard
             eyebrow="Robot Foundation Models"
-            title="Build the next autonomy stack"
-            description="We develop foundation models tailored for embodied intelligence, forming the core architecture for scalable, adaptive, and robust autonomous systems."
+            title="Generalist robot policies"
+            description="We develop the learning and reasoning foundations behind generalist robot policies — making vision-language-action and world models dependable through test-time scaling, reasoning, and physically grounded simulation and modeling."
             graphic={
               <div className="h-80 bg-[url(/visual-highlights/thrust1-encore.jpg)] bg-cover bg-center" />
             }
