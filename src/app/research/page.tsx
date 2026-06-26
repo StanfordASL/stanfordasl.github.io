@@ -5,6 +5,7 @@ import { GradientBackground } from '@/components/gradient'
 import { DataFlywheel } from '@/components/data-flywheel'
 import { Navbar } from '@/components/navbar'
 import { Heading, Subheading } from '@/components/text'
+import { HashScroll } from '@/components/hash-scroll'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -108,6 +109,7 @@ function ThrustSection({
 export default function Research() {
   return (
     <main className="overflow-hidden">
+      <HashScroll />
       <GradientBackground />
       <Container>
         <Navbar />
