@@ -18,6 +18,7 @@ const links = [
   { href: '/publications', label: 'Publications' },
   { href: '/team', label: 'Team' },
   { href: '/faq', label: 'Join' },
+  { href: '/contact', label: 'Contact Us' },
 ]
 
 function DesktopNav({
