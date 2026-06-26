@@ -136,6 +136,12 @@ export default function Research() {
               <ul className="mt-3 space-y-2">
                 {[
                   {
+                    title: 'Self-Supervised Bootstrapping of Action-Predictive Embodied Reasoning',
+                    venue: 'RSS',
+                    year: '2026',
+                    url: 'https://arxiv.org/abs/2602.08167',
+                  },
+                  {
                     title: 'Scan, Materialize, Simulate: A Generalizable Framework for Physically Grounded Robot Planning',
                     venue: 'arXiv',
                     year: '2025',
@@ -146,12 +152,6 @@ export default function Research() {
                     venue: 'CoRL',
                     year: '2025',
                     url: 'https://arxiv.org/abs/2506.17811',
-                  },
-                  {
-                    title: 'Self-Supervised Bootstrapping of Action-Predictive Embodied Reasoning',
-                    venue: 'RSS',
-                    year: '2026',
-                    url: 'https://arxiv.org/abs/2602.08167',
                   },
                 ].map((paper) => (
                   <li key={paper.title} className="flex gap-2 text-sm/5">
@@ -243,10 +243,10 @@ export default function Research() {
               <ul className="mt-3 space-y-2">
                 {[
                   {
-                    title: 'Real-Time Anomaly Detection and Reactive Planning with Large Language Models',
-                    venue: 'RSS',
-                    year: '2024',
-                    url: 'https://arxiv.org/abs/2407.08735',
+                    title: 'Observing and Controlling Features in Vision-Language-Action Models',
+                    venue: 'arXiv',
+                    year: '2026',
+                    url: 'https://arxiv.org/abs/2603.05487',
                   },
                   {
                     title: 'Real-Time Out-of-Distribution Failure Prevention via Multi-Modal Reasoning',
@@ -255,10 +255,10 @@ export default function Research() {
                     url: 'https://arxiv.org/abs/2505.10547',
                   },
                   {
-                    title: 'Observing and Controlling Features in Vision-Language-Action Models',
-                    venue: 'arXiv',
-                    year: '2026',
-                    url: 'https://arxiv.org/abs/2603.05487',
+                    title: 'Real-Time Anomaly Detection and Reactive Planning with Large Language Models',
+                    venue: 'RSS',
+                    year: '2024',
+                    url: 'https://arxiv.org/abs/2407.08735',
                   },
                 ].map((paper) => (
                   <li key={paper.title} className="flex gap-2 text-sm/5">
@@ -329,13 +329,6 @@ export default function Research() {
           papers={[
             {
               title:
-                'Data Lifecycle Management in Evolving Input Distributions for Learning-based Aerospace Applications',
-              venue: 'IEEE Aerospace Conference',
-              year: '2023',
-              url: 'https://arxiv.org/abs/2209.06855',
-            },
-            {
-              title:
                 'Realistic Extreme Behavior Generation for Improved AV Testing',
               venue: 'IEEE ICRA',
               year: '2025',
@@ -347,6 +340,13 @@ export default function Research() {
               venue: 'CoRL',
               year: '2025',
               url: 'https://arxiv.org/abs/2506.19121',
+            },
+            {
+              title:
+                'Data Lifecycle Management in Evolving Input Distributions for Learning-based Aerospace Applications',
+              venue: 'IEEE Aerospace Conference',
+              year: '2023',
+              url: 'https://arxiv.org/abs/2209.06855',
             },
           ]}
           dark
@@ -379,13 +379,6 @@ export default function Research() {
           // },
           {
             title:
-              'Transformer-based Model Predictive Control: Trajectory Optimization via Sequence Modeling',
-            venue: 'IEEE RA-L',
-            year: '2024',
-            url: '/wp-content/papercite-data/pdf/Celestini.Gammelli.ea.RAL24.pdf',
-          },
-          {
-            title:
               'Discovering Dominant Dynamics for Nonlinear Continuum Robot Control',
             venue: 'npj Robotics',
             year: '2025',
@@ -398,6 +391,13 @@ export default function Research() {
               'IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)',
             year: '2025',
             url: 'https://ieeexplore.ieee.org/document/11246389',
+          },
+          {
+            title:
+              'Transformer-based Model Predictive Control: Trajectory Optimization via Sequence Modeling',
+            venue: 'IEEE RA-L',
+            year: '2024',
+            url: '/wp-content/papercite-data/pdf/Celestini.Gammelli.ea.RAL24.pdf',
           },
         ]}
         graphic={
@@ -430,10 +430,10 @@ export default function Research() {
                 <ul className="mt-3 space-y-2">
                   {[
                     {
-                      title: 'Testing Gecko-Inspired Adhesives with Astrobee Aboard the ISS',
-                      venue: 'IEEE Robotics and Automation Magazine',
-                      year: '2022',
-                      url: 'https://ieeexplore.ieee.org/document/9783137',
+                      title: 'Discovering Dominant Dynamics for Nonlinear Continuum Robot Control',
+                      venue: 'Nature Portfolio (npj Robotics)',
+                      year: '2025',
+                      url: 'https://www.nature.com/articles/s44182-025-00021-8',
                     },
                     {
                       title: 'Locomotion as manipulation with ReachBot',
@@ -442,10 +442,10 @@ export default function Research() {
                       url: 'https://www.science.org/doi/abs/10.1126/scirobotics.adi9762',
                     },
                     {
-                      title: 'Discovering Dominant Dynamics for Nonlinear Continuum Robot Control',
-                      venue: 'Nature Portfolio (npj Robotics)',
-                      year: '2025',
-                      url: 'https://www.nature.com/articles/s44182-025-00021-8',
+                      title: 'Testing Gecko-Inspired Adhesives with Astrobee Aboard the ISS',
+                      venue: 'IEEE Robotics and Automation Magazine',
+                      year: '2022',
+                      url: 'https://ieeexplore.ieee.org/document/9783137',
                     },
                   ].map((paper) => (
                     <li key={paper.title} className="flex gap-2 text-sm/5">
