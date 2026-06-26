@@ -86,49 +86,6 @@ function FeatureSection({ images }: { images: string[] }) {
   )
 }
 
-function ContactUs() {
-  return (
-    <div className="mt-8 mb-2 bg-gray-900 bg-[url(/dot-texture.svg)] py-16">
-      <Container>
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
-          <div>
-            <figure className="flex max-w-xl flex-col text-left">
-              <div className="tracking-tight text-white">
-                <p className="text-3xl font-bold lg:text-4xl">Contact Us</p>
-                <p className="mt-4 text-base lg:text-lg">
-                  Autonomous Systems Laboratory<br />
-                  Stanford University<br />
-                  Department of Aeronautics &amp; Astronautics<br />
-                  William F. Durand Building, Rm. 009<br />
-                  496 Lomita Mall<br />
-                  Stanford, CA 94305-4035
-                </p>
-              </div>
-            </figure>
-          </div>
-          <div className="w-full ml-auto">
-            <div className="-m-2 rounded-4xl bg-white/15 shadow-[inset_0_0_2px_1px_#ffffff4d] ring-1 ring-black/5">
-              <div className="rounded-4xl p-2 shadow-md shadow-black/5">
-                <div className="overflow-hidden rounded-3xl shadow-2xl outline outline-1 -outline-offset-1 outline-black/10">
-                  <iframe
-                    width="100%"
-                    height="320"
-                    style={{ border: 0 }}
-                    loading="lazy"
-                    allowFullScreen
-                    referrerPolicy="no-referrer-when-downgrade"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3168.2!2d-122.1733!3d37.4267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fbb2aa1a2e6c7%3A0x150c778bd3b558cf!2sDurand%20Building%2C%20496%20Lomita%20Mall%2C%20Stanford%2C%20CA%2094305!5e0!3m2!1sen!2sus!4v1"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Container>
-    </div>
-  )
-}
-
 function BentoSection() {
   return (
     <Container className="pb-24">
@@ -217,7 +174,6 @@ export default function Home() {
           <BentoSection />
           <FeatureSection images={visualHighlights} />
         </div>
-        <ContactUs />
       </main>
       <div className="bg-linear-to-b from-white from-50% to-gray-100">
         <Footer />
