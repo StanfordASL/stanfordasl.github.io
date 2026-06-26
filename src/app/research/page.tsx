@@ -228,89 +228,91 @@ export default function Research() {
           <Heading as="h3" className="mt-2 !text-3xl sm:!text-5xl">
             Physical AI Safety
           </Heading>
-          <div className="mt-8 overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/10" style={{ aspectRatio: '1216/671' }}>
-            <img
-              alt="Failure detection across diverse real-world scenarios — aerial robots identifying construction zones, high-temperature hazards, and safe landing sites, and a quadruped detecting unauthorized access and chemical spills."
-              src="/visual-highlights/thrust3-safety.jpg"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="mt-8 grid grid-cols-1 gap-x-12 gap-y-8 lg:grid-cols-[5fr_8fr]">
-            <div className="order-2 lg:order-1">
-              <p className="text-xs font-semibold tracking-[0.16em] uppercase text-gray-700">
-                Representative Papers
-              </p>
-              <ul className="mt-3 space-y-2">
-                {[
-                  {
-                    title: 'Observing and Controlling Features in Vision-Language-Action Models',
-                    venue: 'arXiv',
-                    year: '2026',
-                    url: 'https://arxiv.org/abs/2603.05487',
-                  },
-                  {
-                    title: 'Real-Time Out-of-Distribution Failure Prevention via Multi-Modal Reasoning',
-                    venue: 'CoRL',
-                    year: '2025',
-                    url: 'https://arxiv.org/abs/2505.10547',
-                  },
-                  {
-                    title: 'Real-Time Anomaly Detection and Reactive Planning with Large Language Models',
-                    venue: 'RSS',
-                    year: '2024',
-                    url: 'https://arxiv.org/abs/2407.08735',
-                  },
-                ].map((paper) => (
-                  <li key={paper.title} className="flex gap-2 text-sm/5">
-                    <span className="mt-0.5 shrink-0 text-gray-400">•</span>
-                    <span>
-                      <a
-                        href={paper.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="font-medium underline underline-offset-2 transition text-gray-900 decoration-gray-300 hover:decoration-gray-900"
-                      >
-                        {paper.title}
-                      </a>
-                      <span className="text-gray-600">
-                        {' · '}
-                        <span className="whitespace-nowrap">{paper.venue}, {paper.year}</span>
-                      </span>
-                    </span>
-                  </li>
-                ))}
-              </ul>
+          <div className="mt-8 grid grid-cols-1 items-start gap-x-12 gap-y-8 lg:grid-cols-2">
+            <div className="overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/10" style={{ aspectRatio: '2000/1513' }}>
+              <img
+                alt="Failure detection across diverse real-world scenarios — aerial robots identifying construction zones, high-temperature hazards, and safe landing sites."
+                src="/visual-highlights/thrust3-safety.jpg"
+                className="w-full h-full object-cover"
+              />
             </div>
-            <div className="order-1 lg:order-2 text-base/7 text-gray-600">
-              <p>
-                Deploying AI systems in the physical world introduces a new
-                category of risk: unlike digital systems, embodied agents must act
-                under real-time constraints in a dynamic environment. A robot that
-                fails to recognize an anomaly, misinterprets a sensor reading, or
-                violates a safety constraint may present dangerous behavior.
-                The environments that will demand the next generation of robot
-                autonomy stacks, e.g., contact-rich manipulation, autonomous
-                navigation in dynamic scenes, operation alongside humans, are
-                too unpredictable to capture all corner cases in nominal
-                training data. Closing the gap between in-distribution
-                performance and real-world reliability is the central problem
-                of physical AI safety.
-              </p>
-              <p className="mt-4">
-                We develop algorithms that allow robot policies to detect,
-                anticipate, and recover from potential failures while satisfying
-                formal safety constraints. Our work spans runtime monitoring
-                systems that identify out-of-distribution situations before they
-                cause harm; mechanistic interpretability methods that probe the internal representations of
-                robot foundation models to expose how behaviors and failure modes are
-                encoded and can be steered as desired; safety filters that provably
-                constrain policy outputs to safe sets; and reasoning-based frameworks that draw on the
-                broad world knowledge of foundation models to recognize novel
-                hazards and synthesize contingency plans on the fly. By
-                understanding not just what robots do but when and why they fail,
-                we aim to build physical AI systems that operators and society can
-                depend on in high-stakes, real-world deployments.
-              </p>
+            <div>
+              <div className="text-base/7 text-gray-600">
+                <p>
+                  Deploying AI systems in the physical world introduces a new
+                  category of risk: unlike digital systems, embodied agents must act
+                  under real-time constraints in a dynamic environment. A robot that
+                  fails to recognize an anomaly, misinterprets a sensor reading, or
+                  violates a safety constraint may present dangerous behavior.
+                  The environments that will demand the next generation of robot
+                  autonomy stacks, e.g., contact-rich manipulation, autonomous
+                  navigation in dynamic scenes, operation alongside humans, are
+                  too unpredictable to capture all corner cases in nominal
+                  training data. Closing the gap between in-distribution
+                  performance and real-world reliability is the central problem
+                  of physical AI safety.
+                </p>
+                <p className="mt-4">
+                  We develop algorithms that allow robot policies to detect,
+                  anticipate, and recover from potential failures while satisfying
+                  formal safety constraints. Our work spans runtime monitoring
+                  systems that identify out-of-distribution situations before they
+                  cause harm; mechanistic interpretability methods that probe the internal representations of
+                  robot foundation models to expose how behaviors and failure modes are
+                  encoded and can be steered as desired; safety filters that provably
+                  constrain policy outputs to safe sets; and reasoning-based frameworks that draw on the
+                  broad world knowledge of foundation models to recognize novel
+                  hazards and synthesize contingency plans on the fly. By
+                  understanding not just what robots do but when and why they fail,
+                  we aim to build physical AI systems that operators and society can
+                  depend on in high-stakes, real-world deployments.
+                </p>
+              </div>
+              <div className="mt-8">
+                <p className="text-xs font-semibold tracking-[0.16em] uppercase text-gray-700">
+                  Representative Papers
+                </p>
+                <ul className="mt-3 space-y-2">
+                  {[
+                    {
+                      title: 'Observing and Controlling Features in Vision-Language-Action Models',
+                      venue: 'arXiv',
+                      year: '2026',
+                      url: 'https://arxiv.org/abs/2603.05487',
+                    },
+                    {
+                      title: 'Real-Time Out-of-Distribution Failure Prevention via Multi-Modal Reasoning',
+                      venue: 'CoRL',
+                      year: '2025',
+                      url: 'https://arxiv.org/abs/2505.10547',
+                    },
+                    {
+                      title: 'Real-Time Anomaly Detection and Reactive Planning with Large Language Models',
+                      venue: 'RSS',
+                      year: '2024',
+                      url: 'https://arxiv.org/abs/2407.08735',
+                    },
+                  ].map((paper) => (
+                    <li key={paper.title} className="flex gap-2 text-sm/5">
+                      <span className="mt-0.5 shrink-0 text-gray-400">•</span>
+                      <span>
+                        <a
+                          href={paper.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="font-medium underline underline-offset-2 transition text-gray-900 decoration-gray-300 hover:decoration-gray-900"
+                        >
+                          {paper.title}
+                        </a>
+                        <span className="text-gray-600">
+                          {' · '}
+                          <span className="whitespace-nowrap">{paper.venue}, {paper.year}</span>
+                        </span>
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </Container>

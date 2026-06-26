@@ -165,7 +165,7 @@ function BentoSection() {
             title="Safe and reliable autonomy"
             description="Our research integrates monitoring, guardrailing, and alignment techniques that keep embodied systems safe, predictable, and reliable in the real world."
             graphic={
-              <div className="absolute inset-0 bg-gray-50 bg-[url(/visual-highlights/thrust3-safety.jpg)] bg-contain bg-center bg-no-repeat" />
+              <div className="absolute inset-0 bg-[url(/visual-highlights/thrust3-safety.jpg)] bg-cover bg-center" />
             }
             className="h-full"
           />
