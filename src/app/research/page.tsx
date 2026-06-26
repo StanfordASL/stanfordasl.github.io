@@ -136,16 +136,16 @@ export default function Research() {
               <ul className="mt-3 space-y-2">
                 {[
                   {
-                    title: 'Scan, Materialize, Simulate: A Generalizable Framework for Physically Grounded Robot Planning',
-                    venue: 'arXiv',
-                    year: '2025',
-                    url: 'https://arxiv.org/abs/2505.14938',
-                  },
-                  {
                     title: 'RoboMonkey: Scaling Test-Time Sampling and Verification for Vision-Language-Action Models',
                     venue: 'CoRL',
                     year: '2025',
                     url: 'https://arxiv.org/abs/2506.17811',
+                  },
+                  {
+                    title: 'Scan, Materialize, Simulate: A Generalizable Framework for Physically Grounded Robot Planning',
+                    venue: 'ICRA',
+                    year: '2026',
+                    url: 'https://arxiv.org/abs/2505.14938',
                   },
                   {
                     title: 'Self-Supervised Bootstrapping of Action-Predictive Embodied Reasoning',
