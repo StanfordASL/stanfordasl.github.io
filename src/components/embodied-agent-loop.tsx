@@ -266,15 +266,15 @@ export function EmbodiedAgentLoop({ className }: { className?: string }) {
           WORLD FEEDBACK
         </text>
 
-        {/* faint perception group box */}
+        {/* perception group box */}
         <rect
           x={PBOX.x}
           y={PBOX.y}
           width={PBOX.w}
           height={PBOX.h}
           rx={20}
-          fill="rgba(255,255,255,0.015)"
-          stroke="rgba(148,163,184,0.22)"
+          fill="rgba(255,255,255,0.035)"
+          stroke="rgba(148,163,184,0.45)"
           strokeWidth={1.2}
           strokeDasharray="2 5"
         />
