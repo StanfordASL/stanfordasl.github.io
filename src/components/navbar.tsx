@@ -11,6 +11,7 @@ import { usePathname } from 'next/navigation'
 import { Link } from './link'
 import { Logo } from './logo'
 import { PlusGrid, PlusGridItem, PlusGridRow } from './plus-grid'
+import { StanfordWordmark } from './stanford-wordmark'
 
 const links = [
   { href: '/research', label: 'Research' },
@@ -127,9 +128,26 @@ export function Navbar({ banner, isLight = false }: { banner?: React.ReactNode; 
         <PlusGridRow className="relative flex justify-between">
           <div className="relative flex gap-6">
             <PlusGridItem className="py-3">
-              <Link href="/" title="Home">
-                <Logo className={isLight ? "h-16 sm:h-20" : "h-9"} isLight={isLight} />
-              </Link>
+              <div className="flex items-center gap-3 sm:gap-4">
+                <Link href="/" title="Home">
+                  <Logo className={isLight ? "h-16 sm:h-20" : "h-9"} isLight={isLight} />
+                </Link>
+                <span
+                  aria-hidden="true"
+                  className={`hidden h-8 w-px sm:block ${isLight ? 'bg-white/30' : 'bg-gray-300'}`}
+                />
+                <a
+                  href="https://www.stanford.edu"
+                  target="_blank"
+                  rel="noreferrer"
+                  title="Stanford University"
+                  className="hidden sm:block"
+                >
+                  <StanfordWordmark
+                    className={`text-[17px] transition ${isLight ? 'text-white hover:text-white/80' : 'text-[#8C1515] hover:text-[#6f1010]'}`}
+                  />
+                </a>
+              </div>
             </PlusGridItem>
             {banner && (
               <div className="relative hidden items-center py-3 lg:flex">

@@ -1,6 +1,7 @@
 import { PlusGrid, PlusGridItem, PlusGridRow } from '@/components/plus-grid'
 import { Container } from './container'
 import { Link } from './link'
+import { StanfordWordmark } from './stanford-wordmark'
 
 function SocialIconYouTube(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -59,8 +60,19 @@ function SocialLinks() {
 
 function Copyright() {
   return (
-    <div className="text-sm/6 text-gray-950">
-      &copy; {new Date().getFullYear()} Autonomous Systems Lab
+    <div className="flex flex-col gap-1">
+      <a
+        href="https://www.stanford.edu"
+        target="_blank"
+        rel="noreferrer"
+        title="Stanford University"
+        className="w-fit"
+      >
+        <StanfordWordmark className="text-base text-[#8C1515] transition hover:text-[#6f1010]" />
+      </a>
+      <div className="text-sm/6 text-gray-950">
+        &copy; {new Date().getFullYear()} Autonomous Systems Lab, Stanford University
+      </div>
     </div>
   )
 }

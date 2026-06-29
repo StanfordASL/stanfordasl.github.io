@@ -1,5 +1,14 @@
 import '@/styles/tailwind.css'
 import type { Metadata } from 'next'
+import { Source_Serif_4 } from 'next/font/google'
+
+// Stanford's brand serif, used for the "Stanford University" co-brand wordmark.
+const sourceSerif = Source_Serif_4({
+  subsets: ['latin'],
+  weight: ['500', '600'],
+  variable: '--font-source-serif',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: {
@@ -14,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={sourceSerif.variable}>
       <head>
         <link
           rel="stylesheet"
