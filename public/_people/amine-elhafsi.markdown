@@ -3,8 +3,9 @@ layout: person
 title:  "Amine Elhafsi"
 last:   "Elhafsi"
 date:   2019-07-08 00:00:00 -0700
-position: phd
+position: alumni
 excerpt: "Planning and control for safe robotic navigation"
+current: "Waymo"
 img: AmineElhafsi.jpg
 email: amine@stanford.edu
 gscholar: CtE6MWkAAAAJ
