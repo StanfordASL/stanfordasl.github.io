@@ -5,7 +5,7 @@ last:   "Richards"
 date:   2018-11-05 00:00:00 -0700
 position: alumni
 excerpt: "Safe learning-based control, in theory and practice"
-current: "Apple"
+current: "Toyota Research Institute (TRI)"
 img: SpencerRichards.jpg
 email: spenrich@stanford.edu
 gscholar: f8dn0kgAAAAJ

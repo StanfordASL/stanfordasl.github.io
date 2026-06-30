@@ -7,7 +7,7 @@ position: alumni
 excerpt: "Parallel planner and uncertain, kinodynamic sampler"
 img: BrianIchter.jpg
 email: ichter@stanford.edu
-current: "Google Brain Robotics"
+current: "Physical Intelligence (co-founder)"
 ---
 
 Brian Ichter is a PhD candidate in Aeronautics and Astronautics at Stanford University (expected graduation early 2018). He received a BS in Aerospace Engineering and BA in Physics from the University of Virginia in 2012 and an MS in Aeronautics and Astronautics from Stanford University in 2015.

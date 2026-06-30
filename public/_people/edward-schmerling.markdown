@@ -8,7 +8,7 @@ excerpt: "Part-time rocket scientist"
 img: EdwardSchmerling.png
 email: schmrlng@stanford.edu
 website: https://stanford.edu/~schmrlng/
-current: "Waymo Research"
+current: "NVIDIA Research"
 ---
 
 Ed Schmerling is a roboticist pursuing a Ph.D. with the Institute for Computational & Mathematical Engineering at Stanford University. He received a B.S. in Mathematics (with Honors) and Physics from Stanford in 2010.
