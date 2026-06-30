@@ -268,7 +268,7 @@ function Alumni() {
                   person.title
                 )}
               </h3>
-              {person.current && <p className="text-gray-500">{person.current}</p>}
+              {person.current && <p className="font-medium text-[#8C1515]">{person.current}</p>}
             </div>
           </li>
         ))}
