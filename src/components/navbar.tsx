@@ -134,17 +134,17 @@ export function Navbar({ banner, isLight = false }: { banner?: React.ReactNode; 
                 </Link>
                 <span
                   aria-hidden="true"
-                  className={`hidden h-8 w-px sm:block ${isLight ? 'bg-white/30' : 'bg-gray-300'}`}
+                  className={`block h-5 w-px sm:h-8 ${isLight ? 'bg-white/30' : 'bg-gray-300'}`}
                 />
                 <a
                   href="https://www.stanford.edu"
                   target="_blank"
                   rel="noreferrer"
                   title="Stanford University"
-                  className="hidden sm:block"
+                  className="block"
                 >
                   <StanfordWordmark
-                    className={`text-[17px] transition ${isLight ? 'text-white hover:text-white/80' : 'text-[#8C1515] hover:text-[#6f1010]'}`}
+                    className={`text-[13px] transition sm:text-[17px] ${isLight ? 'text-white hover:text-white/80' : 'text-[#8C1515] hover:text-[#6f1010]'}`}
                   />
                 </a>
               </div>
