@@ -1,5 +1,5 @@
 import { Container } from '@/components/container'
-import { AutonomyStackDiagram } from '@/components/autonomy-stack-diagram'
+import { EmbodiedAgentLoop } from '@/components/embodied-agent-loop'
 import { Footer } from '@/components/footer'
 import { GradientBackground } from '@/components/gradient'
 import { DataFlywheel } from '@/components/data-flywheel'
@@ -218,7 +218,7 @@ export default function Research() {
           dark
           reverse
           graphic={
-            <AutonomyStackDiagram />
+            <EmbodiedAgentLoop />
           }
         />
       </div>

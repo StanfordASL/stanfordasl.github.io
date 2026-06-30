@@ -5,7 +5,7 @@ import { ImageCarousel } from '@/components/image-carousel'
 import { Link } from '@/components/link'
 import { SocialLinks } from '@/components/logo-cloud'
 import { DataFlywheel } from '@/components/data-flywheel'
-import { AutonomyStackDiagram } from '@/components/autonomy-stack-diagram'
+import { EmbodiedAgentLoop } from '@/components/embodied-agent-loop'
 import { Navbar } from '@/components/navbar'
 import { GradientBackground } from '@/components/gradient'
 import { Heading } from '@/components/text'
@@ -111,7 +111,7 @@ function BentoSection() {
             title="From digital to physical"
             description="We extend the orchestration, planning, and world knowledge of modern agentic systems to physical robots, grounding them in multi-modal perception and online interaction."
             graphic={
-              <AutonomyStackDiagram className="h-full" />
+              <EmbodiedAgentLoop className="h-full" />
             }
             className="h-full"
           />
