@@ -3,6 +3,7 @@ import { AutonomyStackDiagram } from '@/components/autonomy-stack-diagram'
 import { Footer } from '@/components/footer'
 import { GradientBackground } from '@/components/gradient'
 import { DataFlywheel } from '@/components/data-flywheel'
+import { RobotFoundationDiagram } from '@/components/robot-foundation-diagram'
 import { Navbar } from '@/components/navbar'
 import { Heading, Subheading } from '@/components/text'
 import { HashScroll } from '@/components/hash-scroll'
@@ -125,12 +126,8 @@ export default function Research() {
           </Heading>
           <div className="mt-8 grid grid-cols-1 items-center gap-x-12 gap-y-8 lg:grid-cols-2">
             <div className="order-2 lg:order-1">
-              <div className="overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/10">
-                <img
-                  alt="R&B-EnCoRe: an information-benefit filter distills reasoning primitives into a refined mixture used to train VLAs for manipulation, legged locomotion, and autonomous driving, yielding action-predictive embodied reasoning."
-                  src="/visual-highlights/thrust1-encore.jpg"
-                  className="w-full"
-                />
+              <div className="aspect-[3/2] overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/10">
+                <RobotFoundationDiagram className="h-full" />
               </div>
               <p className="mt-8 text-xs font-semibold tracking-[0.16em] uppercase text-gray-700">
                 Representative Papers

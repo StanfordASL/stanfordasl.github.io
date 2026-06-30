@@ -6,6 +6,7 @@ import { Link } from '@/components/link'
 import { SocialLinks } from '@/components/logo-cloud'
 import { DataFlywheel } from '@/components/data-flywheel'
 import { AutonomyStackDiagram } from '@/components/autonomy-stack-diagram'
+import { RobotFoundationDiagram } from '@/components/robot-foundation-diagram'
 import { Navbar } from '@/components/navbar'
 import { GradientBackground } from '@/components/gradient'
 import { Heading } from '@/components/text'
@@ -99,9 +100,7 @@ function BentoSection() {
             eyebrow="Robot Foundation Models"
             title="Generalist robot policies"
             description="We develop the learning and reasoning foundations behind generalist robot policies — making vision-language-action and world models dependable through test-time scaling, reasoning, and physically grounded simulation and modeling."
-            graphic={
-              <div className="h-80 bg-[url(/visual-highlights/thrust1-encore.jpg)] bg-cover bg-center" />
-            }
+            graphic={<RobotFoundationDiagram className="h-full" />}
             className="h-full"
           />
         </Link>
