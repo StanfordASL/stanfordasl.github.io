@@ -9,6 +9,7 @@ import {
   getFaculty,
   getResearchTeam,
   getVisiting,
+  type Person,
 } from '@/lib/people'
 import type { Metadata } from 'next'
 
@@ -103,20 +104,9 @@ function Director() {
   )
 }
 
-function ResearchTeam() {
-  const team = getResearchTeam()
-
+function PersonCard({ person }: { person: Person }) {
   return (
-    <Container className="mt-24">
-      <Heading as="h3" className="mt-2">
-        Research Team
-      </Heading>
-      <ul
-        role="list"
-        className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-4"
-      >
-        {team.map((person) => (
-          <li key={person.slug} className="overflow-hidden rounded-2xl bg-white/80 ring-1 ring-black/5">
+    <li className="overflow-hidden rounded-2xl bg-white/80 ring-1 ring-black/5">
             <div className="aspect-square w-full">
               <img
                 alt={person.title}
@@ -160,9 +150,49 @@ function ResearchTeam() {
                 <p className="mt-3 text-base/6 text-gray-500">{person.excerpt}</p>
               )}
             </div>
-          </li>
-        ))}
-      </ul>
+    </li>
+  )
+}
+
+function ResearchTeam() {
+  const team = getResearchTeam()
+  const byLast = (a: Person, b: Person) => a.last.localeCompare(b.last)
+  const postdocs = team.filter((p) => p.position === 'postdoc').sort(byLast)
+  const phds = team.filter((p) => p.position === 'phd').sort(byLast)
+
+  return (
+    <Container className="mt-24">
+      <Heading as="h3" className="mt-2">
+        Research Team
+      </Heading>
+
+      {postdocs.length > 0 && (
+        <>
+          <div className="mt-12 mb-8 flex items-center gap-4">
+            <Subheading>Postdoctoral Scholars</Subheading>
+            <div className="h-px grow bg-gray-200" />
+          </div>
+          <ul role="list" className="grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-4">
+            {postdocs.map((person) => (
+              <PersonCard key={person.slug} person={person} />
+            ))}
+          </ul>
+        </>
+      )}
+
+      {phds.length > 0 && (
+        <>
+          <div className="mt-16 mb-8 flex items-center gap-4">
+            <Subheading>PhD Students</Subheading>
+            <div className="h-px grow bg-gray-200" />
+          </div>
+          <ul role="list" className="grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-4">
+            {phds.map((person) => (
+              <PersonCard key={person.slug} person={person} />
+            ))}
+          </ul>
+        </>
+      )}
     </Container>
   )
 }
