@@ -1,6 +1,7 @@
 import { Container } from '@/components/container'
 import { Footer } from '@/components/footer'
 import { GradientBackground } from '@/components/gradient'
+import { Link } from '@/components/link'
 import { Navbar } from '@/components/navbar'
 import { Heading, Subheading } from '@/components/text'
 import {
@@ -107,18 +108,20 @@ function Director() {
 function PersonCard({ person }: { person: Person }) {
   return (
     <li className="overflow-hidden rounded-2xl bg-white/80 ring-1 ring-black/5">
-            <div className="aspect-square w-full">
+            <Link href={`/team/${person.slug}`} className="block aspect-square w-full">
               <img
                 alt={person.title}
                 src={`/_people/people-imgs/${person.img}`}
                 className="block size-full object-cover"
               />
-            </div>
+            </Link>
             <div className="p-4">
               <div className="flex items-start justify-between gap-2">
                 <div>
                   <h3 className="text-base font-semibold tracking-tight">
-                    {person.title}
+                    <Link href={`/team/${person.slug}`} className="hover:text-gray-600">
+                      {person.title}
+                    </Link>
                   </h3>
                   <p className="text-sm text-gray-600">
                     {person.position === 'phd'
@@ -211,22 +214,18 @@ function ExternalAffiliates() {
       >
         {affiliates.map((person) => (
           <li key={person.slug} className="overflow-hidden rounded-2xl bg-white/80 ring-1 ring-black/5">
-            <div className="aspect-square w-full">
+            <Link href={`/team/${person.slug}`} className="block aspect-square w-full">
               <img
                 alt={person.title}
                 src={`/_people/people-imgs/${person.img}`}
                 className="block size-full object-cover"
               />
-            </div>
+            </Link>
             <div className="p-4">
               <h3 className="text-base font-semibold tracking-tight">
-                {person.website ? (
-                  <a href={person.website} className="hover:text-gray-600">
-                    {person.title}
-                  </a>
-                ) : (
-                  person.title
-                )}
+                <Link href={`/team/${person.slug}`} className="hover:text-gray-600">
+                  {person.title}
+                </Link>
               </h3>
               {person.current && (
                 <p className="text-sm text-gray-600">{person.current}</p>
@@ -253,20 +252,18 @@ function Alumni() {
       >
         {alumni.map((person) => (
           <li key={person.slug} className="flex items-center gap-4">
-            <img
-              alt={person.title}
-              src={`/_people/people-imgs/${person.img}`}
-              className="size-16 rounded-full object-cover"
-            />
+            <Link href={`/team/${person.slug}`} className="shrink-0">
+              <img
+                alt={person.title}
+                src={`/_people/people-imgs/${person.img}`}
+                className="size-16 rounded-full object-cover"
+              />
+            </Link>
             <div className="text-sm/6">
               <h3 className="font-medium">
-                {person.website ? (
-                  <a href={person.website} className="hover:text-gray-600">
-                    {person.title}
-                  </a>
-                ) : (
-                  person.title
-                )}
+                <Link href={`/team/${person.slug}`} className="hover:text-gray-600">
+                  {person.title}
+                </Link>
               </h3>
               {person.current && <p className="font-medium text-[#8C1515]">{person.current}</p>}
             </div>
