@@ -31,33 +31,19 @@ function Director() {
       {faculty.map((person) => (
         <div key={person.slug} className="mt-12 grid grid-cols-1 gap-12 lg:grid-cols-3">
           <div className="lg:col-span-1">
-            {person.website ? (
-              <a href={person.website} className="block aspect-square overflow-hidden rounded-xl outline-1 -outline-offset-1 outline-black/10">
-                <img
-                  alt={person.title}
-                  src={`/_people/people-imgs/${person.img}`}
-                  className="block size-full object-cover"
-                />
-              </a>
-            ) : (
-              <div className="aspect-square overflow-hidden rounded-xl outline-1 -outline-offset-1 outline-black/10">
-                <img
-                  alt={person.title}
-                  src={`/_people/people-imgs/${person.img}`}
-                  className="block size-full object-cover"
-                />
-              </div>
-            )}
+            <Link href={`/team/${person.slug}`} className="block aspect-square overflow-hidden rounded-xl outline-1 -outline-offset-1 outline-black/10">
+              <img
+                alt={person.title}
+                src={`/_people/people-imgs/${person.img}`}
+                className="block size-full object-cover"
+              />
+            </Link>
           </div>
           <div className="lg:col-span-2">
             <h3 className="text-2xl font-medium tracking-tight">
-              {person.website ? (
-                <a href={person.website} className="hover:text-gray-600">
-                  {person.title}
-                </a>
-              ) : (
-                person.title
-              )}
+              <Link href={`/team/${person.slug}`} className="hover:text-gray-600">
+                {person.title}
+              </Link>
             </h3>
             <hr className="mt-4 border-t border-gray-200" />
             <div className="mt-6 text-base/6 text-gray-600 space-y-3">
