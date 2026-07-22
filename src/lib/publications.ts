@@ -696,6 +696,47 @@ function byRecency(a: Publication, b: Publication): number {
   return a.title.localeCompare(b.title)
 }
 
+// Canonical "lastname|firstInitial" key for matching a bib author to a person.
+function nameKey(rawName: string): string {
+  const n = rawName.replace(/[{}.]/g, '').replace(/\s+/g, ' ').trim()
+  if (!n) return ''
+  let last: string
+  let given: string
+  if (n.includes(',')) {
+    const [l, ...rest] = n.split(',')
+    last = l.trim()
+    given = rest.join(' ').trim()
+  } else {
+    const parts = n.split(' ').filter(Boolean)
+    last = parts[parts.length - 1] ?? ''
+    given = parts.slice(0, -1).join(' ')
+  }
+  const initial = (given.match(/\p{L}/u)?.[0] ?? '').toLowerCase()
+  return `${last.toLowerCase()}|${initial}`
+}
+
+function personKey(person: { title: string; last: string }): string {
+  const last = person.last.replace(/[{}.]/g, '').trim()
+  // strip honorifics + the last name from the display title to isolate the given name
+  const stripped = person.title
+    .replace(/\b(prof|professor|dr|mr|mrs|ms)\.?\b/gi, '')
+    .replace(new RegExp(`\\b${last.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\b`, 'i'), '')
+    .replace(/[{}.]/g, '')
+    .trim()
+  const initial = (stripped.match(/\p{L}/u)?.[0] ?? '').toLowerCase()
+  return `${last.toLowerCase()}|${initial}`
+}
+
+// All publications co-authored by a given person, most recent first.
+export function getPublicationsForPerson(person: { title: string; last: string }): Publication[] {
+  const key = personKey(person)
+  if (!key.endsWith('|') && key.includes('|')) {
+    const all = getPublicationSections().flatMap((section) => section.items)
+    return all.filter((pub) => pub.authors.some((a) => nameKey(a) === key)).sort(byRecency)
+  }
+  return []
+}
+
 export function getPublicationSections(): PublicationSection[] {
   if (cachedSections) {
     return cachedSections

@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
+  // Old lab site (and Google's index) use trailing-slash URLs, e.g.
+  // /people/prof-marco-pavone/ — export dir/index.html so those resolve.
+  trailingSlash: true,
   images: { unoptimized: true },
   async redirects() {
     return [

@@ -5,6 +5,7 @@ import { Link } from '@/components/link'
 import { Navbar } from '@/components/navbar'
 import { Heading } from '@/components/text'
 import { getPersonBySlug, getProfiledPeople, type Person } from '@/lib/people'
+import { getPublicationsForPerson, type Publication } from '@/lib/publications'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Markdown from 'react-markdown'
@@ -125,6 +126,60 @@ function ProfileLinks({ person }: { person: Person }) {
   )
 }
 
+function PublicationsList({ publications }: { publications: Publication[] }) {
+  if (publications.length === 0) return null
+
+  // group by year, most recent first
+  const byYear = new Map<number, Publication[]>()
+  for (const pub of publications) {
+    const year = pub.year ?? 0
+    if (!byYear.has(year)) byYear.set(year, [])
+    byYear.get(year)!.push(pub)
+  }
+  const years = [...byYear.keys()].sort((a, b) => b - a)
+
+  return (
+    <div className="mt-16">
+      <Heading as="h2" className="!text-2xl sm:!text-3xl">
+        Publications
+      </Heading>
+      <p className="mt-2 text-sm text-gray-500">
+        {publications.length} publication{publications.length === 1 ? '' : 's'} ·{' '}
+        <a href="/publications/" className="underline underline-offset-2 hover:text-gray-800">
+          full lab bibliography
+        </a>
+      </p>
+      <div className="mt-8 space-y-10">
+        {years.map((year) => (
+          <div key={year} className="grid grid-cols-1 gap-x-8 gap-y-3 sm:grid-cols-[5rem_1fr]">
+            <div className="text-sm font-semibold tracking-[0.16em] text-gray-400 uppercase sm:pt-0.5">
+              {year || '—'}
+            </div>
+            <ol className="space-y-4">
+              {byYear.get(year)!.map((pub) => (
+                <li key={pub.key} className="text-base/7 text-gray-600">
+                  {pub.url ? (
+                    <a
+                      href={pub.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="decoration-gray-300 underline-offset-2 hover:text-gray-900 hover:underline"
+                    >
+                      {pub.citation}
+                    </a>
+                  ) : (
+                    pub.citation
+                  )}
+                </li>
+              ))}
+            </ol>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 export default async function PersonPage({
   params,
 }: {
@@ -133,6 +188,8 @@ export default async function PersonPage({
   const { slug } = await params
   const person = getPersonBySlug(slug)
   if (!person) notFound()
+
+  const publications = getPublicationsForPerson(person)
 
   // Keep Email:/Phone: lines out of the rendered bio (shown as contacts instead).
   const bio = person.content
@@ -190,6 +247,8 @@ export default async function PersonPage({
             )}
           </div>
         </div>
+
+        <PublicationsList publications={publications} />
       </Container>
 
       <Footer />
