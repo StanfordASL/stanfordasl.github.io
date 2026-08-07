@@ -7,6 +7,7 @@ position: faculty
 excerpt: ""
 img: Pavone.jpg
 website: https://web.stanford.edu/~pavone/
+gscholar: RhOpyXcAAAAJ
 ---
 
 Associate Professor, Department of Aeronautics and Astronautics
