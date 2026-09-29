@@ -14,6 +14,7 @@ export interface Person {
   email?: string
   excerpt?: string
   current?: string
+  role?: string
   content: string
   slug: string
 }
@@ -41,6 +42,7 @@ function readPerson(fileName: string): Person {
     email: data.email || undefined,
     excerpt: data.excerpt || undefined,
     current: data.current || undefined,
+    role: data.role || undefined,
     content: content.trim(),
     slug: fileName.replace(/\.markdown$/, ''),
   }
@@ -70,6 +72,10 @@ export function getResearchTeam(): Person[] {
 
 export function getExternalAffiliates(): Person[] {
   return getPeopleByPosition('externalresearchaffiliate')
+}
+
+export function getSupportStaff(): Person[] {
+  return getPeopleByPosition('staff')
 }
 
 export function getAlumni(): Person[] {

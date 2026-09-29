@@ -3,7 +3,8 @@ layout: person
 title:  "Fabio Hübel"
 last:   "Hübel"
 date:   2026-01-01 00:00:00 -0700
-position: phd
+position: alumni
+current: "Stealth Startup"
 excerpt: "Embodied agents for robotic search and spatial reasoning"
 img: FabioHuebel.png
 email: fhuebel@stanford.edu

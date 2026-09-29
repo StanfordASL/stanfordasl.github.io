@@ -9,6 +9,7 @@ import {
   getExternalAffiliates,
   getFaculty,
   getResearchTeam,
+  getSupportStaff,
   getVisiting,
   type Person,
 } from '@/lib/people'
@@ -244,6 +245,44 @@ function ExternalAffiliates() {
   )
 }
 
+function SupportStaff() {
+  const staff = getSupportStaff()
+
+  return (
+    <Container className="mt-24">
+      <Heading as="h3" className="mt-2">
+        Support Staff
+      </Heading>
+      <ul
+        role="list"
+        className="mt-12 grid grid-cols-2 gap-x-6 gap-y-12 md:grid-cols-4"
+      >
+        {staff.map((person) => (
+          <li key={person.slug} className="overflow-hidden rounded-2xl bg-white/80 ring-1 ring-black/5">
+            <Link href={`/team/${person.slug}`} className="block aspect-square w-full">
+              <img
+                alt={person.title}
+                src={`/_people/people-imgs/${person.img}`}
+                className="block size-full object-cover"
+              />
+            </Link>
+            <div className="p-4">
+              <h3 className="text-base font-semibold tracking-tight">
+                <Link href={`/team/${person.slug}`} className="hover:text-gray-600">
+                  {person.title}
+                </Link>
+              </h3>
+              {person.role && (
+                <p className="text-sm text-gray-600">{person.role}</p>
+              )}
+            </div>
+          </li>
+        ))}
+      </ul>
+    </Container>
+  )
+}
+
 function Alumni() {
   const alumni = getAlumni()
 
@@ -393,6 +432,7 @@ export default function Company() {
       <Director />
       <ResearchTeam />
       <ExternalAffiliates />
+      <SupportStaff />
       <Alumni />
       <VisitingStudents />
       <DiversityStatement />

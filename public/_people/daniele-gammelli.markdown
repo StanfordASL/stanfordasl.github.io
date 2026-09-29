@@ -3,7 +3,8 @@ layout: person
 title:  "Daniele Gammelli"
 last:   "Gammelli"
 date:   2023-03-08 00:00:00 -0700
-position: postdoc
+position: alumni
+current: "Italian Institute for Artificial Intelligence"
 excerpt: "Learning-based control, mobility systems, autonomous spacecraft"
 img: DanieleGammelli.jpg
 email: gammelli@stanford.edu

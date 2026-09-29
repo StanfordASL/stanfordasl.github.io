@@ -3,7 +3,7 @@ layout: person
 title:  "Chris Agia"
 last:   "Agia"
 date:   2022-06-01 00:00:00 -0700
-position: phd
+position: postdoc
 excerpt: "Robot learning, integrated task & motion planning"
 img: ChrisAgia.jpg
 email: cagia@cs.stanford.edu

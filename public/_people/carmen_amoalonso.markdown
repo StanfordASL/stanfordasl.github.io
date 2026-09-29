@@ -3,7 +3,8 @@ layout: person
 title: "Carmen Amo Alonso"
 last: "Amo Alonso"
 date: 2025-06-01 00:00:00 -0700
-position: postdoc
+position: alumni
+current: "UC Berkeley"
 excerpt: "Optimal and learning-based control, manipulation, space robotics"
 img: carmen.jpg
 email: camoalon@stanford.edu

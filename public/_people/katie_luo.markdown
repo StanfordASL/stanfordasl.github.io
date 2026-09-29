@@ -3,7 +3,8 @@ layout: person
 title: "Katie Luo"
 last:  "Luo"
 date:  2025-01-10 00:00:00 -0700
-position: postdoc
+position: alumni
+current: "Waymo"
 excerpt: "Perception and scene understanding for embodied agents, Autonomous Vehicles"
 img: katie.jpg
 email: katieluo@stanford.edu

@@ -3,7 +3,8 @@ layout: person
 title: "Jakob Thumm"
 last: "Thumm"
 date: 2025-07-16 00:00:00 -0700
-position: postdoc
+position: alumni
+current: "scaledrive"
 excerpt: "Data-driven control of high-dimensional systems"
 img: JakobThumm.jpg
 email: thumm@stanford.edu

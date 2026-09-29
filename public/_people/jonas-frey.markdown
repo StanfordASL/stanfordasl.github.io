@@ -3,7 +3,8 @@ layout: person
 title: "Jonas Frey"
 last: "Frey"
 date: 2025-07-16 00:00:00 -0700
-position: postdoc
+position: alumni
+current: "University of Washington"
 excerpt: "Learning perception, locomotion and navigation for legged robots"
 img: jonas_frey.jpg
 email: jonfrey@ethz.ch

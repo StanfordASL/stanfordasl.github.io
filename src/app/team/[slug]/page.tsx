@@ -31,8 +31,8 @@ export async function generateMetadata({
   }
 }
 
-function roleLabel(position: string): string {
-  switch (position) {
+function roleLabel(person: Person): string {
+  switch (person.position) {
     case 'phd':
       return 'PhD Student'
     case 'postdoc':
@@ -43,6 +43,8 @@ function roleLabel(position: string): string {
       return 'External Research Affiliate'
     case 'alumni':
       return 'Alumni'
+    case 'staff':
+      return person.role || 'Staff'
     default:
       return ''
   }
@@ -198,7 +200,7 @@ export default async function PersonPage({
     .join('\n\n')
     .trim()
 
-  const role = roleLabel(person.position)
+  const role = roleLabel(person)
 
   return (
     <main className="overflow-hidden">
