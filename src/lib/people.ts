@@ -74,7 +74,7 @@ export function getExternalAffiliates(): Person[] {
   return getPeopleByPosition('externalresearchaffiliate')
 }
 
-export function getSupportStaff(): Person[] {
+export function getStaff(): Person[] {
   return getPeopleByPosition('staff')
 }
 

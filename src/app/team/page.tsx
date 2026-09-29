@@ -9,7 +9,7 @@ import {
   getExternalAffiliates,
   getFaculty,
   getResearchTeam,
-  getSupportStaff,
+  getStaff,
   getVisiting,
   type Person,
 } from '@/lib/people'
@@ -245,13 +245,13 @@ function ExternalAffiliates() {
   )
 }
 
-function SupportStaff() {
-  const staff = getSupportStaff()
+function Staff() {
+  const staff = getStaff()
 
   return (
     <Container className="mt-24">
       <Heading as="h3" className="mt-2">
-        Support Staff
+        Staff
       </Heading>
       <ul
         role="list"
@@ -431,7 +431,7 @@ export default function Company() {
       </Container>
       <Director />
       <ResearchTeam />
-      <SupportStaff />
+      <Staff />
       <ExternalAffiliates />
       <Alumni />
       <VisitingStudents />
