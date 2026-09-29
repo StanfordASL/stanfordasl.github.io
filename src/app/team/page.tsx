@@ -431,8 +431,8 @@ export default function Company() {
       </Container>
       <Director />
       <ResearchTeam />
-      <ExternalAffiliates />
       <SupportStaff />
+      <ExternalAffiliates />
       <Alumni />
       <VisitingStudents />
       <DiversityStatement />
