@@ -728,11 +728,18 @@ function personKey(person: { title: string; last: string }): string {
 }
 
 // All publications co-authored by a given person, most recent first.
-export function getPublicationsForPerson(person: { title: string; last: string }): Publication[] {
+export function getPublicationsForPerson(person: {
+  title: string
+  last: string
+  excludePubs?: string[]
+}): Publication[] {
   const key = personKey(person)
   if (!key.endsWith('|') && key.includes('|')) {
+    const excluded = new Set(person.excludePubs ?? [])
     const all = getPublicationSections().flatMap((section) => section.items)
-    return all.filter((pub) => pub.authors.some((a) => nameKey(a) === key)).sort(byRecency)
+    return all
+      .filter((pub) => !excluded.has(pub.key) && pub.authors.some((a) => nameKey(a) === key))
+      .sort(byRecency)
   }
   return []
 }
