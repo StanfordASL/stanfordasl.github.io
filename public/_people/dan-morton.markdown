@@ -11,6 +11,8 @@ github: danielpmorton
 linkedin: danielpmorton
 website: https://danielpmorton.github.io/
 gscholar: cH0GOYEAAAAJ
+exclude_pubs:
+  - SpieserTreleavenEtAl2014  # not me
 ---
 Daniel Morton is a PhD student in Mechanical Engineering. His research focuses on efficient planning and modeling methods for robotic manipulation, with an emphasis on space and novel hardware platforms.
 Prior to Stanford, Daniel received his B.S. in Mechanical Engineering with an Aerospace minor from Cornell University. While there, he conducted research in the Organic Robotics Lab, working on smart structures for morphing soft-robotic wings. Daniel has also interned at Boeing and NASA, and was an early member of a robotics startup, Medra.

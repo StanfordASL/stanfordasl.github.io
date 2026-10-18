@@ -15,6 +15,7 @@ export interface Person {
   excerpt?: string
   current?: string
   role?: string
+  excludePubs?: string[]
   content: string
   slug: string
 }
@@ -43,6 +44,7 @@ function readPerson(fileName: string): Person {
     excerpt: data.excerpt || undefined,
     current: data.current || undefined,
     role: data.role || undefined,
+    excludePubs: Array.isArray(data.exclude_pubs) ? data.exclude_pubs.map(String) : undefined,
     content: content.trim(),
     slug: fileName.replace(/\.markdown$/, ''),
   }
