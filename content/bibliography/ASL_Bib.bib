@@ -577,6 +577,7 @@
 @String{proc_IEEE_ICHRI                = {{IEEE Int. Conf. on Human-Robot Interaction}}}
 @String{proc_IEEE_ICRA                 = {{Proc. IEEE Conf. on Robotics and Automation}}}
 @String{proc_IEEE_ICRA_SVLM            = {{Proc. IEEE Conf. on Robotics and Automation: Workshop Safe-VLM}}}
+@String{proc_IEEE_ICRA_FOR            = {{Proc. IEEE Conf. on Robotics and Automation: Workshop on Frontiers of Optimization for Robotics}}}
 @String{proc_IEEE_INFOCOM              = {{IEEE Conf. on Computer Communications}}}
 @String{proc_IEEE_IPDPS                = {{IEEE Parallel and Distributed Processing Symposium}}}
 @String{proc_IEEE_IRC                  = {{IEEE Int. Conf. on Robotic Computing}}}
@@ -1924,7 +1925,7 @@
   abstract  = {MPC has established itself as the primary methodology for constrained control, enabling autonomy across diverse applications. While model fidelity is crucial in MPC, solving the corresponding optimization problem in real time remains challenging when combining long horizons with high-fidelity models that capture both short-term dynamics and long-term behavior. Motivated by results on the EDS, which imply that, under certain conditions, the influence of modeling inaccuracies decreases exponentially along the prediction horizon, this paper proposes a multi-timescale MPC scheme for fast-sampled control. Tailored to systems with both fast and slow dynamics, the proposed approach improves computational efficiency by i) switching to a reduced model that captures only the slow, dominant dynamics and ii) exponentially increasing integration step sizes to progressively reduce model detail along the horizon. We evaluate the method on three practically motivated robotic control problems in simulation and observe speed-ups of up to an order of magnitude.},
   month     = nov,
   url       = {https://arxiv.org/pdf/2511.14311},
-  keywords  = {sub},
+  pages     = {2879-2886},
   owner     = {dmorton},
   timestamp = {2025-11-18}
 }
@@ -2920,6 +2921,41 @@
   timestamp = {2021-10-14}
 }
 
+@article{MortonArrizabalagaEtAl2026,
+  author = {Morton, Daniel and Arrizabalaga, Jon and Manchester, Zachary and Pavone, Marco},
+  title = {Elasti{QP}: An Always-Feasible QP Solver for Constrained Robot Control},
+  journal = {arXiv preprint arXiv:2609.19080},
+  year = {2026},
+  abstract = {As robot capabilities increase, quadratic programming (QP)-based controllers must account for a similarly increasing number of constraints to ensure safe, reliable operation. Yet, with each added constraint, this introduces more chances of momentary conflict: in which case, a QP solver that returns an "infeasible" status leaves the controller with nothing to execute. To address this, we introduce ElastiQP, a modified dual active-set QP solver that relaxes every inequality constraint with an exact, per-constraint l1 penalty while keeping equality constraints (dynamics) hard. Notably, ElastiQP does so by folding the slack variables into the solver analytically, maintaining a constant size of the condensed linear system. On a suite of robot control benchmarks, ElastiQP achieves microsecond-level performance, matching or outperforming leading modern solvers on feasible problems. On infeasible problems, ElastiQP handles these gracefully, confining violations to strictly the conflicting inequality terms, returning a usable solution up to 40x faster than the best alternative solvers. ElastiQP is available as an open-source C++ header-only library, with Python and JAX interfaces.},
+  url = {https://arxiv.org/pdf/2609.19080},
+  owner = {dmorton},
+  timestamp = {2026-09-16},
+  keywords  = {sub},
+}
+
+@inproceedings{MortonMohnotPavone2026,
+  author = {Morton, Daniel and Mohnot, Pranit and Pavone, Marco},
+  title = {Constrained Whole-Body Tracking for Humanoid Robots},
+  booktitle = proc_CoRL,
+  year = {2026},
+  abstract = {Recent advances in reinforcement learning (RL) have demonstrated impressive whole-body agility for humanoid robots, yet ensuring safety and satisfying constraints -- particularly those specified after training -- remains a challenge. Towards this goal, we present ConstrainedMimic, a control framework that leverages whole-body kinematics and dynamics for real-time constraint enforcement within RL tracking policies. By integrating principles from operational space control and control barrier functions, we enable the satisfaction of arbitrary runtime constraints on both the kinematic reference motion and the underlying dynamics, with efficient computation at frequencies above 1 kHz. In whole-body motion-tracking experiments in simulation and hardware, we demonstrate collision avoidance (both with the robot body and external obstacles), joint limits, and center of mass stability constraints. By remaining consistent with the current contact mode and tracking objectives, we minimally restrict the capabilities of the policy when constraints are active.},
+  url = {https://arxiv.org/pdf/2606.00374},
+  owner = {dmorton},
+  timestamp = {2026-05-29},
+  keywords  = {press},
+}
+
+@article{MortonPavone2026,
+  author = {Morton, Daniel and Pavone, Marco},
+  title = {frax: Fast Robot Kinematics and Dynamics in JAX},
+  journal = proc_IEEE_ICRA_FOR,
+  year = {2026},
+  abstract = {In robot control, planning, and learning, there is a need for rigid-body dynamics libraries that are highly performant, easy to use, and compatible with CPUs and accelerators. While existing libraries often excel at either low-latency CPU execution or high-throughput GPU workloads, few provide a unified framework that targets multiple architectures without compromising performance or ease-of-use. To address this, we introduce frax, a JAX-based library for robot kinematics and dynamics, providing a high-performance, pure-Python interface across CPU, GPU, and TPU. Via a fully-vectorized approach to robot dynamics, frax enables efficient real-time control and parallelization, while supporting automatic differentiation for optimization-based methods. On CPU, frax achieves low-microsecond computation times suitable for kilohertz control rates, outperforming common libraries in Python and approaching optimized C++ implementations. On GPU, the same code scales to thousands of instances, reaching upwards of 100 million dynamics evaluations per second. We validate performance on a Franka Panda manipulator and a Unitree G1 humanoid, and release frax as an open-source library.},
+  url = {https://arxiv.org/pdf/2604.04310},
+  owner = {dmorton},
+  timestamp = {2026-04-05}
+}
+
 @article{MortonAntonovaEtAl2025,
   author = {Morton, Daniel and Antonova, Rika and Coltin, Brian and Pavone, Marco and Bohg, Jeannette},
   title = {Deformable Cargo Transport in Microgravity with Astrobee},
@@ -2952,6 +2988,7 @@
   abstract = {ReachBot, a proposed robotic platform, employs extendable booms as limbs for mobility in challenging environments, such as martian caves. When attached to the environment, ReachBot acts as a parallel robot, with reconfiguration driven by the ability to detach and re-place the booms. This ability enables manipulation-focused scientific objectives: for instance, through operating tools, or handling and transporting samples. To achieve these capabilities, we develop a two-part solution, optimizing for robustness against task uncertainty and stochastic failure modes. First, we present a mixed-integer stance planner to determine the positioning of ReachBot's booms to maximize the task wrench space about the nominal point(s). Second, we present a convex tension planner to determine boom tensions for the desired task wrenches, accounting for the probabilistic nature of microspine grasping. We demonstrate improvements in key robustness metrics from the field of dexterous manipulation, and show a large increase in the volume of the manipulation workspace. Finally, we employ Monte-Carlo simulation to validate the robustness of these methods, demonstrating good performance across a range of randomized tasks and environments, and generalization to cable-driven morphologies. We make our code available at our project webpage, https://stanfordasl.github.io/reachbot_manipulation.},
   url = {https://arxiv.org/pdf/2403.10768.pdf},
   owner = {dmorton},
+  pages = {9924-9930},
   timestamp = {2024-03-16},
 }
 
@@ -4440,7 +4477,6 @@
  month     = july,
  abstract  = {While foundation models offer promise toward improving robot safety in out-of-distribution (OOD) scenarios, how to effectively harness their generalist knowledge for real-time, dynamically feasible response remains a crucial problem. We present FORTRESS, a joint reasoning and planning framework that generates semantically safe fallback strategies to prevent safety-critical, OOD failures. At a low frequency under nominal operation, FORTRESS uses multi-modal foundation models to anticipate possible failure modes and identify safe fallback sets. When a runtime monitor triggers a fallback response, FORTRESS rapidly synthesizes plans to fallback goals while inferring and avoiding semantically unsafe regions in real time. By bridging open-world, multi-modal reasoning with dynamics-aware planning, we eliminate the need for hard-coded fallbacks and human safety interventions. FORTRESS outperforms on-the-fly prompting of slow reasoning models in safety classification accuracy on synthetic benchmarks and real-world ANYmal robot data, and further improves system safety and planning success in simulation and on quadrotor hardware for urban navigation.},
  address   = {Seoul, Korea},
- keywords  = {press},
  owner     = {mganai},
  url    = {https://arxiv.org/abs/2505.10547},
  timestamp = {2025-06-08},
@@ -4614,14 +4650,14 @@
   url       = {/wp-content/papercite-data/pdf/Enders.Harrison.Pavone.Schiffer.L4DC23.pdf}
 }
 
-@article{ElhafsiMortonPavone2025,
+@inproceedings{ElhafsiMortonPavone2025,
   author       = {Elhafsi, A. and Morton, D. and Pavone, M.},
   title        = {Scan, Materialize, Simulate: A Generalizable Framework for Physically Grounded Robot Planning},
-  year         = {2025},
-  journal      = {ArXiv 2505.14938},
+  year         = {2026},
+  booktitle    = proc_IEEE_ICRA,
   abstract     = {Autonomous robots must reason about the physical consequences of their actions to operate effectively in unstructured, real-world environments. We present Scan, Materialize, Simulate (SMS), a unified framework that combines 3D Gaussian Splatting for accurate scene reconstruction, visual foundation models for semantic segmentation, vision-language models for material property inference, and physics simulation for reliable prediction of action outcomes. By integrating these components, SMS enables generalizable physical reasoning and object-centric planning without the need to re-learn foundational physical dynamics. We empirically validate SMS in a billiards-inspired manipulation task and a challenging quadrotor landing scenario, demonstrating robust performance on both simulated domain transfer and real-world experiments. Our results highlight the potential of bridging differentiable rendering for scene reconstruction, foundation models for semantic understanding, and physics-based simulation to achieve physically grounded robot planning across diverse settings.},
   url          = {https://arxiv.org/pdf/2505.14938},
-  keywords     = {sub},
+  pages        = {1639-1646},
   owner        = {amine},
   timestamp    = {2025-05-20}
 }
