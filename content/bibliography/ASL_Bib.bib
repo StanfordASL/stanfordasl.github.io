@@ -2992,6 +2992,18 @@
   timestamp = {2024-03-16},
 }
 
+@article{MohnotHeltenEtAl2026,
+  author = {Mohnot, Pranit and Helten, Christian and Gammelli, Daniele and Pavone, Marco},
+  title = {Filter-Aware Fine-Tuning for Safe Humanoid Whole-Body Tracking},
+  journal = {arXiv preprint arXiv:2610.02341},
+  year = {2026},
+  abstract = {Safe whole-body motion is essential for deploying humanoid robots in unstructured environments. Modern humanoid control commonly separates reference specification from execution, with a planner, teleoperator, or motion generator providing a reference that a reinforcement-learning policy tracks through dynamically feasible whole-body control. Runtime safety filters, such as control barrier functions (CBFs), offer a promising approach for enforcing newly introduced constraints via interventions on the tracker's outputs. We show, however, that treating the tracking policy and safety filter independently induces fundamental mismatches, as filtering alters both the executed actions and the induced state distribution. We study this policy-filter interface through case studies that isolate dynamics, objective, and information mismatches, highlight their root causes, and use these insights to develop CoFiT (Constrained Filter-aware Tuning), a filter-aware fine-tuning method for pretrained trackers. Across diverse constraint scenes, CoFiT reduces violation time relative to filter-only training by 91\% on TWIST2 and 21\% on SONIC, while requiring smaller safety filter corrections. On Unitree G1 hardware, CoFiT reduces violation time by 83\% for TWIST2 and completes every trial without operator intervention, whereas 50\% of baseline trials require an operator stop. Together, these results provide actionable insights into policy-filter interactions and establish design principles for integrating learned trackers with runtime safety filters.},
+  url = {https://arxiv.org/pdf/2610.02341},
+  owner = {pmohnot},
+  timestamp = {2026-10-01},
+  keywords  = {sub},
+}
+
 @inproceedings{McClellanLorenzettiEtAl2020,
   author    = {McClellan, A. and Lorenzetti, J. and Pavone, M. and Farhat, C.},
   title     = {Projection-based Model Order Reduction for Flight Dynamics and Model Predictive Control},
