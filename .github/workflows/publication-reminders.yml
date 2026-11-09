@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'dry-run (print only), send, or init (baseline, no emails)'
+        description: 'dry-run (print only), send, or init (baseline, no emails). Scheduled runs use repo variable REMINDER_MODE (default dry-run).'
         default: dry-run
 
 permissions:
@@ -24,7 +24,7 @@ jobs:
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
           FALLBACK_EMAIL: ${{ secrets.FALLBACK_EMAIL }}
         run: |
-          mode="${{ github.event.inputs.mode || 'send' }}"
+          mode="${{ github.event.inputs.mode || vars.REMINDER_MODE || 'dry-run' }}"
           case "$mode" in
             send)  python3 scripts/publication_reminders.py --send ;;
             init)  python3 scripts/publication_reminders.py --init ;;
