@@ -89,12 +89,12 @@ def serpapi(**params):
         sys.exit("SERPAPI_KEY not set (or use --fixture)")
     params.update(api_key=key, engine="google_scholar_author")
     url = "https://serpapi.com/search.json?" + urllib.parse.urlencode(params)
-    for attempt in range(3):
+    for attempt in range(2):
         try:
-            with urllib.request.urlopen(url, timeout=120) as r:
+            with urllib.request.urlopen(url, timeout=30) as r:
                 return json.load(r)
         except (TimeoutError, urllib.error.URLError):
-            if attempt == 2:
+            if attempt == 1:
                 raise
             time.sleep(5)
 
@@ -104,13 +104,20 @@ def fetch_articles(marco_id):
     return data.get("articles", [])
 
 
+LOOKUP_FAILURES = 0
+
+
 def full_authors(article):
     """Author strings are truncated with '...'; fetch the full list for new papers."""
+    global LOOKUP_FAILURES
     if "..." not in article.get("authors", "") or not article.get("citation_id"):
         return article.get("authors", "")
+    if LOOKUP_FAILURES >= 3:  # SerpAPI is struggling; stop burning time
+        return article["authors"]
     try:
         data = serpapi(view_op="view_citation", citation_id=article["citation_id"], hl="en")
     except Exception as e:  # keep the daily run alive; fall back to the truncated list
+        LOOKUP_FAILURES += 1
         print(f"warn: full author lookup failed for {article.get('title')!r}: {e}", file=sys.stderr)
         return article["authors"]
     return data.get("citation", {}).get("authors", article["authors"])
