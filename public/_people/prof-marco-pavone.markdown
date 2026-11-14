@@ -10,17 +10,17 @@ website: https://web.stanford.edu/~pavone/
 gscholar: RhOpyXcAAAAJ
 ---
 
-Associate Professor, Department of Aeronautics and Astronautics
+Full Professor, Department of Aeronautics and Astronautics
 
 Director, Autonomous Systems Laboratory
 
 Director, Center for Automotive Research at Stanford (CARS)
 
-Associate Professor (by courtesy), Information Systems Laboratory
+Professor (by courtesy), Information Systems Laboratory
 
-Associate Professor (by courtesy), Computer Science
+Professor (by courtesy), Computer Science
 
-Associate Professor (by courtesy), Institute for Computational and Mathematical Engineering (ICME)
+Professor (by courtesy), Institute for Computational and Mathematical Engineering (ICME)
 
 Ph.D. Massachusetts Institute of Technology, 2010
 
